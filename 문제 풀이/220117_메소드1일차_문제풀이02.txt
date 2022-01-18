@@ -1,0 +1,97 @@
+public class 메소드_문제 {
+//1부터 100까지 짝수 개수 구하기
+	//스타트가 엔드보다 크면 리턴 0 	엔드>스타트
+	//엔드넘이 스타트넘보다 작으면 리턴 0
+	//엔드넘이 100을 초과할 수 없다.
+	public static int getCount(int startNum, int endNum) {
+		int count = 0;
+		if(startNum>=endNum && endNum >100) {
+			return 0;
+			}//★☆필터링 먼저 하기☆★
+		for(int i=startNum; i<=endNum; i++) {
+			if((i%2)==0){
+				count ++;	
+				}
+		}return count;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int count = getCount(51,100);
+		System.out.println("짝수의 갯수는 "+count+"개 입니다.");
+
+	}
+
+}
+
+
+=======================================================
+
+
+public class 메소드_문제02 {
+	
+//문제 1번 1~10
+	public static void 짝수(){
+		for(int i=1; i<=10; i++) {
+			if((i%2)==0) {
+				System.out.print("짝수는");
+				System.out.print(i);
+				System.out.println("입니다.");
+			}
+		}
+	}
+	//메소드를 활용해서 최대값 구하기.
+//	조건. 인덱스 값이 50이 넘으면 최대값 비교를 하지 않습니다.
+//	조건. 배열길이가 5를 넘으면 return 0을 합니다. 
+	
+	public static int 최대값(int[] array) {
+		int max = array[0];
+		if(array.length>5) {
+			return 0;		
+		}
+		for(int i=0; i<array.length; i++) {
+			if(array[i] < 50) {
+				if(max < array[i]) {
+					max = array[i];
+				}
+			}
+		}return max;
+	}
+//	메소드를 활용해서 거스름돈 풀기.
+//	조건. 파라미터값에 만원을 입력하면 만원 몇장
+//	 	오천원을 입력하면 오천원 몇장을 출력.
+//		만원,오천원외 단어가 오면 0을 return 하시오
+	public static int 거스름돈(String money, int totalMoney) {
+		int man = 10000;
+		int ocheon = 5000;
+		int result = 0; 
+		if(money.equals("만원")) {
+			result = totalMoney/man;
+			return result;
+		}if(money.equals("오천원")) {
+			result = totalMoney/ocheon;
+			return result;
+		}else {
+			return 0;
+		}
+
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		짝수();
+		
+		
+		//2번
+		int array[] = {11,16,18,19,50};
+		System.out.println("이 배열의 최댓값은"+최대값(array));
+		
+		//3번
+		int mon = 거스름돈("오천원",50000);
+		System.out.println(mon+"장");
+	}
+
+}
