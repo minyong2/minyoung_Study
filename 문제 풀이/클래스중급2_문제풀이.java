@@ -50,7 +50,8 @@ System.out.println();
 		        System.out.print("평균 : "+avg);
 		        System.out.println();
 //===========================================================
-		        
+/************************************************************/
+		        System.out.println("☆★3번 문제 다시보기★☆");
 		        System.out.println("☆★3번 문제★☆");
 		        String query = "name=brian&addr=daejeon&age=30";
 		        String name = "";
