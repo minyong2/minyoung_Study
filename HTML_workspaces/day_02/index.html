@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM 태그 공부</title>
+    <style>
+       table {
+        margin: auto;
+        box-shadow: 0 3px 7px grey;
+        background-color: white;
+    }
+
+    table:hover {
+        box-shadow: 0 0 20px 0px rgba(12, 12, 12, 0.2);
+    }
+
+    tr {
+        border: 1px solid #141414;
+    }
+
+    tr:nth-child(even) {
+        background-color: #fff1dc;
+    }
+
+    thead {
+        box-shadow: 0 1px 10px rgb(255, 5, 151);
+    }
+
+    th {
+        padding: 1rem 2rem;
+        letter-spacing: 0.4rem;
+        font-size: 1.2rem;
+        font-weight: 900;
+        text-align: center;
+    }
+
+    td {
+        padding: 1rem 2rem;
+        text-align: center;
+    } 
+    </style>
+</head>
+<body>
+    <!-- 폼태그 작성 -->
+    <form action="웹서버 주소">
+        아이디 :   <input type="text"><br>
+        비밀번호 : <input type="password"><br>
+        이메일 :   <input type="email">
+        <input type="submit" value="버튼">
+    </form>
+
+    <h3>table 태그</h3>
+    <!-- 테이블 태그 작성 -->
+    <table>
+        <thead>
+            <!-- tr : table row - 테이블 행 -->
+            <!-- th : table head - 테이블의 제목(컬럼) -->
+            <tr>
+                <th>출장비내역</th>
+                <th>금액</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                    <!-- table data : 해당 컬럼 데이터-->
+                <td>교통비</td>
+                <td>1,250</td>
+            </tr>
+            <tr>
+                <td>식비</td>
+                <td>100,000</td>
+            </tr>
+            <tr>
+                <td>숙박비</td>
+                <td>500,000</td>
+            </tr>
+        </tbody>
+        <tfoot> 
+            <!-- foot도 있다! 잘 안씀 -->
+            <tr>
+                <td>총 합계</td>
+                <td>601,250</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h3>table 시간표 만들기</h3>
+    <table>
+    <thead>
+        <tr>
+            <th>시간</th>
+            <th>월요일</th>
+            <th>화요일</th>
+            <th>수요일</th>
+            <th>목요일</th>
+            <th>금요일</th>
+            <th>토요일</th>
+            <th>일요일</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>아침<br> 07:00~09:00</td>
+            <td colspan="2">토스트</td>
+            <td>요거트</td>
+            <td>주먹밥</td>
+            <td colspan="2">시리얼</td>
+            <td>  - </td>
+        </tr>
+        <tr>
+            <td>간식</td>
+            <td>커피사탕</td>
+            <td>초콜릿</td>
+            <td> - </td>
+            <td>젤리</td>
+            <td> 빵</td>
+            <td colspan="2"> - </td>
+            
+
+        </tr>
+        <tr>
+            <td>점심<br> 12:00~14:00</td>
+            <td rowspan="2">샐러드</td>
+            <td colspan="2">포케</td>
+            <td>파스타</td>
+            <td>삼겹살</td>
+            <td>소고기</td>
+            <td>삼계탕</td>
+        </tr>
+        <tr>
+            <td>저녁<br> 18:00~20:00</td>
+            
+            <td>닭볶음탕</td>
+            <td>김치찌개</td>
+            <td>쭈꾸미볶음</td>
+            <td>곱창전골</td>
+            <td>연어 사시미</td>
+            <td>돼지국밥</td>
+        </tr>
+        <tr>
+            <td>야식<br> 21:00~00:00</td>
+            
+            <td colspan="2">고추바사삭</td>
+            
+            <td>허니콤보</td>
+            <td> - </td>
+            <td> 치즈피자</td>
+            <td> 닭발 </td>
+        </tr>
+
+
+    </tbody>
+
+    </table>
+</body>
+</html>
