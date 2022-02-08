@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      .contact-form {
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+        margin: 50px auto;
+        width: 350px;
+        text-align: center;
+      }
+      .contact-form h2 {
+        background-color: #efefef;
+        margin-top: 0;
+        padding: 10px;
+      }
+      .contact-form input {
+        width: 90%;
+        margin: 10px auto;
+        padding: 10px;
+      }
+      .contact-form input[type=checkbox]  {
+        width: 10%;
+        margin: 10px auto;
+        padding: 10px;
+      }
+      .contact-form select {
+        width: 90%;
+        margin: 10px auto;
+        padding: 10px;
+      }
+      .contact-form textarea {
+        width: 90%;
+        margin: 5px auto;
+        padding: 10px;
+        height: 80px;
+      }
+      .submit-btn {
+        cursor: pointer;
+        width: 150px;
+        margin-left: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contact-form">
+      <h2>카페 메뉴</h2>
+      <select name="" id=""> 
+        <option> --Please choose an menu--</option>
+      </select>
+      <input type="number" placeholder="수량">
+      <input type="text"placeholder="회원이름 입력란..." maxlength="10">
+      <input type="password" placeholder="회원비밀번호 입력란..">
+      <input type="checkbox" checked> 광고수신 여부
+      <input type="email" placeholder="이메일 입력란...">@ <input type="email" list="email-list">
+      <datalist id="email-list">
+        <option value="naver.com"></option>
+        <option value="nate.com"></option>
+        <option value="daum.com"></option>
+        <option value="직접 입력"></option>
+       
+      </datalist>
+      <form action="서버 주소" method="post">
+        <textarea name="message" placeholder="주문시 메모 입력란..."></textarea>
+
+        <input type="button" value="주문"><br>
+      </form>
+    </div>
+  </body>
+</html>
