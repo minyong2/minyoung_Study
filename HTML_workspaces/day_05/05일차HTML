@@ -1,0 +1,39 @@
+CSS
+1. position
+  - static : 돌(안움직임) 
+  - relative : 원래 기준에서 움직임, 
+  - absolute : 자기 마음대로 움직임
+    (조건 : 부모가 relative면 부모 기준으로 움직임)
+  - fixed : 스크롤해도 같이 따라옴, 고정!
+
+2. margin, padding, box-size
+  div -> (박스태그)
+  공통점 : 박스 간격 조절
+  margin : 부모 박스와 부모 박스 간격 (부모-부모)
+  padding : 부모 박스 안에 있는 자식 박스 간격 조절 (부모-자식)
+
+  # padding 작성 법 
+  자식 태그와 거리두기
+  부모태그 css padding 작성
+  padding: 10px; //동서남북 모두 10px 패딩
+  padding: 5px 10px 0; // top , (left,right) , bottom;
+  padding: 5px 10px; // (top,bottom) , (left,right)
+  padding: 10px 10px 10px 10px; //top,right,bottom,left (시계방향)
+
+  #margin 작성 법
+  부모 태그와 거리두기
+  
+  margin: 10px; //동서남북 모두 10px 패딩
+  margin: 5px 10px 0; // top , (left,right) , bottom;
+  margin: 5px 10px; // (top,bottom) , (left,right)
+  margin: 10px 10px 10px 10px; //top,right,bottom,left (시계방향)
+
+
+  
+
+
+  
+
+
+3. flex
+기타) 반응형
