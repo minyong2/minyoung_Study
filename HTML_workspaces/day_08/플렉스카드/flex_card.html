@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: antiquewhite;
+        }
+        .ul::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .li{
+            float: left;
+        }
+        .la{
+            display: flex;
+            justify-content: space-around;
+            list-style-type: none;
+            background-color: rgb(129, 129, 129);
+            padding: 8px 16px;
+            margin: 10px 0;
+            width: 100%;
+            height: 60px;
+        }
+
+        .active{
+            text-decoration-line: none;
+            color: white;
+            font-weight: 800;
+            font-size: 30px;
+            
+        }
+        .active:hover {
+            color: rgb(250, 205, 6);
+        }
+
+        .card-container{
+            display: flex;
+            width: 1000px;
+            height: 400px;
+            margin: 40px auto;
+            padding: 10px;
+        }
+        .emon1{
+            margin-top: 40px;
+        }
+        .emon2{
+            margin-top: 40px;
+        }
+        .item{
+            position: relative;
+            height: 100%;
+            flex: 1;
+            padding: 10px;
+            color: white;
+            transition: 0.45s;
+        }
+        .item:hover{
+            flex-grow: 2.5;
+            
+        }
+      
+        .item:hover .caption{
+            display: block;
+        }
+        .item:nth-child(1){
+            background-color: rgb(34, 206, 0);
+
+        }
+        .item:nth-child(2){
+            background-color: rgb(252, 214, 0);
+        }
+        .item:nth-child(3){
+            background-color: rgb(0, 154, 243);
+
+        }
+        .item h2{
+            font-size: 30px;
+            text-align: center;
+        }
+        .caption{
+            display: none;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 28px 0;
+            max-width: 230px;
+        }
+        .item:hover img{
+            transform: scale(0.8);
+        }
+
+        .caption button{
+            border: 2px solid white;
+            border-radius: 20px;
+            background: transparent;
+            margin: 5px;
+            padding: 8px 18px;
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            font-style: italic;
+            cursor: pointer;
+        }
+
+        .item img{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 200px;
+        }
+        .top {
+            margin-top: 10px;
+            width: 300px;
+            font-size: 50px;
+            font-style: italic;
+            margin: 0 auto;
+
+            text-decoration-line: none;
+            color: black;
+            display: block;
+        }
+        .photxt{
+            margin-left: 10px;
+            font-style: italic;
+        }
+        .emonpt{
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .emonga{
+            transform: scale(1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .emonga:hover {
+            transform: scale(1.2);
+        }
+
+        .box{
+            overflow: hidden;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <a class="top" href="#"><h1 class="top">MINYOUNG</h1></a>
+    <div class="container">
+        <ul class="la">
+            <li><a class="active" href="#">INFO</a></li>
+            <li><a class="active" href="#">PHOTO</a></li>
+            <li><a class="active" href="#">FRIEND</a></li>
+            <li><a class="active" href="#">PROPERTY</a></li>
+        </ul>
+    <div class="card-container">
+        <div class="item item1">
+            <h2>APPLE</h2>
+            <div class="caption">
+                <p>에몽가는 사과를 좋아합니다.</p>
+                <button class="give-apple">사과 주기</button>
+            </div>
+            <img class="emon1" src="에몽1.png" alt="">
+        </div>
+        <div class="item item2">
+            <h2>FLY</h2>
+            <div class="caption">
+                <p>에몽가는 날다람쥐입니다.</p>
+                <button class="give-apple">공중 부양</button>
+            </div>
+            <img class="emon2" src="에몽2.png" alt="">
+        </div>
+        <div class="item item3">
+            <h2>BORED</h2>
+            <div class="caption">
+                <p>에몽가는 지루합니다.</p>
+                <button class="give-apple">놀아 주기</button>
+            </div>
+            <img class="emon3" src="에몽3.png" alt="">
+        </div>
+        </div>
+        <h2 class="photxt">에몽가 사진 모음</h2>
+        <div class="box">
+        <div class="emonga">
+            <img class="" src="에몽가.gif" alt="">
+            <img src="에몽가.gif" alt="">
+            <img src="에몽가.gif" alt="">
+            <img src="에몽가.gif" alt="">
+           
+        </div>
+    </div>
+    </div>
+</body>
+</html>
