@@ -1,0 +1,73 @@
+### SQL 
+DML
+    INSERT
+    DELETE
+    SELECT
+    UPDATE
+DDL
+    CREATE
+    DROP
+    ALTER
+DCL
+    GRANT
+    REVOKE
+TCL
+    COMMIT      (DML은 커밋 미포함, DDL은 커밋 포함)
+    ROLLBACK
+    ( 홍길동이 DB 접속 INSERT 5번 날리고 COMMIT
+      실수로 DELETE 해버림
+      그럼 , ROLLBACK을 이용해서 최신 COMMIT 상태로 돌아감 ) - 회사에서 디비버 쓰려면 AUTO COMMIT 구글에 검색해서 끄삼.
+
+
+### DataBase
+- 관계형 데이터베이스 (RDBMS) - Relation DataBase Management System
+  데이터를 더욱 안전하게 저장.
+  JOIN있음
+  부모테이블, 자식테이블 존재
+  ex) emp테이블에 deptno 칼럼이 있음
+      deptno컬럼은 dept 테이블에서!
+
+      emp 테이블(자식)은 dept테이블(부모)을 참조하고 있음.
+      참조를 주는 쪽 - 자식
+      참조를 받는 쪽 - 부모
+
+
+- 비관계형 데이터베이스 (NoSQL) *분석이 목적!
+  대표적 프로그램 : Dynamodb,MongoDB
+  JOIN없음
+
+
+foreign Key (= 참조키, 외래키)
+ 참조키는 컬럼이름이 중요한게 아니라 데이터 타입이 같아야 함.
+ CREATE TABLE emp(
+     empno int(11), ename varchar(20) , deptno int(5)
+     foreign Key(deptno) references dept(deptno) [이벤트 종류]
+ ) 
+  ; 44 = emp가 자식 dept가 부모
+  고유한 데이터를 가진 컬럼을 참조해야 함.
+
+### 단골문제~!
+
+  **on delete
+  : 부모 테이블 데이터에 삭제 이벤트가 발생하면 자식 데이터에 이벤트 발생 
+  **on update
+  : 부모 테이블 데이터에 수정 이벤트가 발생하면 자식 데이터에 이벤트 발생 
+ 
+ 이벤트 종류
+ 1.cascade : 자식데이터 삭제 or 수정
+ 2.set null : 자식데이터 null로 업데이트
+ 3.set default : 자식데이터 default값으로 업데이트
+ 4.default(restrict) : 부모 데이터 삭제 or 수정 불가능
+ 5.NO ACTION : 자식 테이블의 데이터는 변경되지 않음
+
+
+
+
+
+
+
+
+
+
+
+
