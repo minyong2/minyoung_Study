@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-image:  linear-gradient(#ffffff41,#0d002b4f)
+                , url(main.jpg);
+    background-position: center;
+    
+    
+}
+.top-menu{
+    display: flex;
+    justify-content: space-around;
+    margin: 0px auto;
+}
+.top-menu ul li{
+    list-style:none;
+    display: inline-block;
+    margin: 20px 10px;
+    padding: 10px 8px;
+    font-weight: 800;
+    font-size: 19px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.top-menu ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+.logo{
+    position: absolute;
+    background: url(butterfly.png);
+    color: #fafafa00;
+    height: 50px;
+    width: 50px;
+    left: 5%;
+    top: 1%;
+} 
+/* 전 사이트 공용 */
+.g-main{
+    position: relative;
+    display: flex;
+    background-color: #0d002b59;
+    width: 88%;
+    height: 600px;
+    margin: 50px 200px 100px;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.gallery{
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 30px;
+}
+.gallery img{
+    width: 100%;
+    cursor: pointer;
+
+}
+.gallery img:hover {
+    transform: scale(0.9) rotate(-5deg);
+    border-radius: 20px;
+    box-shadow: 0 32px 75px rgba(68, 77, 136, 0.2);
+    
+}
+
+
+.side{
+    border: 1px solid #0d002b4f;
+    background-color: rgba(143, 143, 143, 0.192);
+    width: 180px;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    /* top: 20%; */
+    padding: 20px;
+}
+.side li{
+    padding: 8px 5px;
+
+    margin: 10px 0px;
+}
+.side li:hover{
+    background-color: #1a00774f;
+}
+.special{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    bottom: 15%;
+    list-style: none;
+}
+.special a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.nav-link{
+    list-style: none;
+}
+
+.nav-link a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
