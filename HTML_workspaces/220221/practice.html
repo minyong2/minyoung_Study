@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(#edd3ff4b , #1f1f1f1a) ,url(background.png);
+            background-position: center;
+            background-size: cover;
+        }
+        .rocket{
+            position: absolute;
+            bottom: 0%;
+            right: 10%;
+            width: 250px;
+            /* animation :
+                이름을 설정해야 애니메이션을 재생할 수 있다.
+                (ex: rocket) */
+            animation: rocket 4s linear infinite;
+            /* linear -> 처음부터 끝까지 부드럽게 일정한 속도로 진행
+               infinite -> 애니메이션 무한 반복 */
+        }
+        /* @ : 어노테이션 */
+        @keyframes rocket {
+            0%{
+                bottom: 0;
+                transform: translate(-30px, 5px);
+                opacity: 0;
+                
+             }
+            100%{ 
+                bottom: 105%;
+                transform: translate(30px, 50px);
+                opacity: 1;
+                transform: rotate(-45deg);
+            }
+        }
+        .box{
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            width: 100px;
+            height: 100px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 247, 231, 0.822);
+            transition: all 0.2s linear;
+        }
+        .box:hover{
+            transform: rotate(45deg);
+            border: dashed 3px white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="rocket" src="rocket.png" alt="">
+    </div>
+    <div class="box"></div>
+    
+</body>
+</html>

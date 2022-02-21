@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .top{
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 30px;
+            font-weight: 300;
+            font-style: italic;
+            text-shadow: 3px 3px 3px rgb(255, 230, 0);
+        }
+
+        .photo{
+            display: flex;
+            
+            justify-content: space-around;
+        }
+
+        .pokemon{
+            width: 80%;
+            margin: auto;
+            margin-top: 30px;
+            
+        }
+
+        .photo img{
+            width: 250px;
+            height: 250px;
+        }
+
+        .photo img:hover{
+            border: 5px solid white;
+            
+            
+        }
+        .mon-pt p:hover{
+            text-shadow: 1px 1px 1px rgba(255, 239, 17, 0.658);
+        }
+
+        .mon-pt h3{
+            text-shadow: 5px 3px 1px rgb(255, 239, 17);
+        }
+
+
+        .vote{
+            margin-top: 10px;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            font-weight: 800;
+            padding: 5px 10px;
+            background-color: rgba(255, 218, 11, 0.589);
+        }
+       
+    </style>
+    <title>당전투</title>
+</head>
+<body>
+    <div class="container">
+        <section class="pokemon">
+            <div class="intro">
+                <p class="top">당신의 전기쥐에 투표하세요</p>
+            </div>
+            <div class="photo">
+                <div class="mon-pt">
+                    <img src="데덴네.jpg" alt="">
+                    <h3>데덴네</h3>
+                    <p>신장 0.2m , 체중 2.2kg</p>
+                    <button class="vote">투표하기</button>
+                </div>
+                <div class="mon-pt">
+                    <img src="에멍가.JPG" alt="">
+                    <h3>에몽가</h3>
+                    <p>신장 0.4m, 체중 5.0kg</p>
+                    <button class="vote">투표하기</button>
+                </div>
+                <div class="mon-pt">
+                    <img src="토게데마츄.JPG" alt="">
+                    <h3>토게데마루</h3>
+                    <p>신장 0.3m, 체중 3.3kg</p>
+                    <button class="vote">투표하기</button>
+                </div>
+            </div>
+        </section>
+</div>
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .animation{
+            position: relative;
+            width: 70%;
+            /* 자식 크기에 맞게 부모 크기 조절 */
+            height: auto;
+            background-color: rgba(3, 181, 204, 0.5);
+            margin: 30px auto 0;
+            /* 애니메이션 정의 */
+    
+        }
+        @keyframes move {
+            0%{
+               transform:translate(-30px,10px);
+            }
+            50%{
+                transform:translate(0px,-15px);
+            }
+            100%{
+                transform:translate(-30px,10px);
+            }
+            
+        }
+        .animation img{
+            width: 60%;
+        }
+
+        .element{
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: move 1.5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="animation">
+            <img class="man" src="man.png" alt="">
+            <img class="element" src="elements.png" alt="">
+        </div>
+
+    </div>
+    
+</body>
+</html>
