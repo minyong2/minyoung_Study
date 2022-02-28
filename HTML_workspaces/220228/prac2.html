@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .row{
+            display: flex;
+            justify-content: space-around;
+            margin: 30px auto;
+            width: 100%;
+            height: auto;
+            /* border: 3px solid; */
+        }
+        .card{
+            width: 300px;
+            height: auto;
+            /* border: 2px solid; */
+            padding: 20px;
+            box-shadow: 1px 4px 10px black;
+            background-color: rgb(238, 238, 238);
+        }
+
+        .card:hover{
+            cursor: pointer;
+        }
+
+        .img-area{
+            width: 100%;
+            height: auto;
+            border: 2px solid;
+        }
+
+        .card img{
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+                <div class="img-area">
+                    <img src="에멍가.JPG" alt="">
+                </div>
+                <h1>에몽가</h1>
+                <p>5세대 전기포켓몬</p>
+            </div>
+            <div class="card">
+                <div class="img-area">
+                <img src="데덴네.jpg" alt="">
+                </div>
+                <h1>데덴네</h1>
+                <p>6세대 전기포켓몬</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
