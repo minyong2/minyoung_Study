@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+:root{
+    /* 자주 사용하는 색상 모음 */
+    /* 자주 사용하는 색상에 변수 이름을 만듦. */
+    --mainColor:rgba(153, 196, 96, 0.5);
+    --secondaryColor:#fff;
+    --borderColor:rgb(255, 255, 255);
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.project-container h3{
+    font-family: 'Rock Salt', cursive;
+}
+h6{
+    font-family: "Russo One",sans-serif;
+    font-weight: 500;
+}
+.section{
+    background-color: var(--mainColor);
+    border-bottom: 1px solid var(--borderColor);
+    padding: 5px;
+}
+.project-container{
+    width: 1200px;
+    /* border: 3px solid; */
+    margin: 10px auto;
+}
+.project-container h3{
+    font-size: 28px;
+    text-align: center;
+    margin: 28px 0;
+}
+.post-wrapper{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,280px);
+    gap: 20px;
+    /* border: 3px solid #17a2b8; */
+    margin-top: 100px;
+    
+}
+.post img{
+    width: 100%;
+    height: 212px;
+    object-fit: cover;
+}
+.post-preview{
+    background-color: var(--secondaryColor);
+    padding: 5%;
+}
+.post-preview h6{
+    font-size: 16px;
+    font-weight: 900;
+    font-family: 'Gowun Batang', serif;
+    color: black;
+}
+
+.post-preview p{
+    color: #4b5156;
+    font-size: 16px;
+    margin: 14px 0;
+    font-family: 'Gowun Batang', serif;
+    font-weight: 600;
+    
+}
+.post-preview a{
+    text-decoration: none;
+    color: #17a2b8;
+}
+
+.post{
+    border: 1px solid var(--borderColor);
+    border-radius: 5px;
+    box-shadow: -2px 7px 12px -3px pink;
+}
