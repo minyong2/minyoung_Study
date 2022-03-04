@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            /* span은 인라인블록 명시해줘야 애니메이션 실행 */
+            display: inline-block;
+            animation: wavy 1.5s infinite;
+            animation-delay: calc(0.1s * var(--i));
+        }
+        @keyframes wavy{
+            0%,
+            40%,
+            100%{
+                transform: translateY(0);
+            }
+            20%{
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="main-container">
+            <!-- ↓인사글 -->
+            <div class="greeting-wrapper">
+                <h1>
+                    <span style="--i:1">H</span>
+                    <span style="--i:2">E</span>
+                    <span style="--i:3">L</span>
+                    <span style="--i:4">L</span>
+                    <span style="--i:5">O</span>
+                    <span style="--i:6">,</span>
+                    <span style="--i:7">W</span>
+                    <span style="--i:8">o</span>
+                    <span style="--i:9">R</span>
+                    <span style="--i:10">L</span>
+                    <span style="--i:11">D</span>
+                    <span style="--i:12">!</span>
+                </h1>
+            </div>
+            <!-- ↓본인소개(사진,뭐하는지) -->
+            <div class="intro-wrapper">
+                <!-- grid 예정 -->
+                <div class="nav-wrapper">
+                    <!-- nav-wrapper 안에는 dots-wrapper가 있음! -->
+                <!-- id이름은 고유해야 함 -->
+                    <div class="dots-wrapper">
+                    <div id="dot1" class="dot"></div>
+                    <div id="dot2" class="dot"></div>
+                    <div id="dot3" class="dot"></div>
+                    </div>
+                </div>
+                <!-- 내정보 -->
+                <div class="info-wrapper">
+                <!-- 나는 뭘 하는가! -->
+                <img src="프로필.jpg" alt="">
+                <h5>Minyoung Kim</h5>
+                </div>
+                <div class="do-wrapper">
+                    <div class="preview-shadow">
+                        <div class="preview">
+                            <div class="corner" id="corner-tl"></div>
+                            <div class="corner" id="corner-tr"></div>
+                            <h3>What I Do</h3>
+                            <p>Javascript와 AWS를 주로 다룹니다.</p>
+                            <div class="corner" id="corner-br"></div>
+                            <div class="corner" id="corner-bl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+</body>
+</html>

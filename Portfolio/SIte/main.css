@@ -7,7 +7,7 @@
 .Hey{
     position: relative;
     width: 100%;
-    height: 970px;
+    height: 980px;
     background-color: rgba(153, 196, 96, 0.623);
     /* border-bottom: 2px solid rgb(255, 196, 225); */
 }
@@ -55,10 +55,12 @@
     color: rgb(100, 133, 58);
 }
 
-.item .img-area{
+.item img{
+    display: block;
+    height: 266px;
+    object-fit: cover;
     width: 100%;
-    height: 200px;
-    border: 2px solid pink ;
+    
 }
 
 
@@ -77,7 +79,7 @@
 
 button{
     background:#ffffff;
-    color:rgb(100, 133, 58);
+    color:rgb(255, 255, 255);
     border:none;
     position:relative;
     height:50px;
@@ -86,6 +88,7 @@ button{
     cursor:pointer;
     transition:800ms ease all;
     outline:none;
+    text-shadow: 1px 1px 3px rgb(100, 133, 58);
 }
 button:hover{
     background:#fff;
@@ -96,10 +99,11 @@ button:before,button:after{
     position:absolute;
     top:0;
     right:0;
-    height:2px;
+    height:8px;
     width:0;
-    background: pink;
+    background: rgba(255, 192, 203, 0.863);
     transition:400ms ease all;
+    border-radius: 5px;
 }
 button:after{
     right:inherit;
