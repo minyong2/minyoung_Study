@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+
+        .container{
+            width: 100%;
+            height: auto;
+            background-color: rgba(199, 255, 153, 0.5);
+            padding: 20px;
+        }
+        .top-text{
+            font-size: 30px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .row{
+            display: flex;
+            justify-content: space-around;
+        }
+        .card{
+            background-color: rgba(96, 143, 52, 0.863);
+            flex-basis: 30%;
+            text-align: center;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        .text{
+            margin-bottom: 20px;
+            color: white;
+            font-size: 20px;
+        }
+        .hh{
+            font-size: 40px;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .span{
+            font-size: 15px;
+        }
+        .list{
+            text-align: left;
+            color: whitesmoke;
+        }
+
+        .list li{
+            margin: 15px;
+            font-size: 15px;
+            list-style: none;
+        }
+
+        .list li::before{
+            /* position: absolute; */
+            content: "⊙ ";
+            color: rgb(255, 149, 237);
+            
+            
+
+        }
+
+        .card button{
+            margin-top: 30px;
+            padding: 10px;
+            width: 150px;
+            background: transparent;
+            border: 2px solid rgb(255, 143, 162);
+            border-radius: 5px;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .card button:hover{
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <p class="top-text">Choose Your Plan</p>
+        </header>
+        <div class="row">
+            <div class="card">
+                <p class="text">Starter</p>
+                <h2 class="hh">19$ <span class="span">/month</span></h2>
+                <ul class="list">
+                    <li>1 Website</li>
+                    <li>10 GB Disk Space</li>
+                    <li>Free Email Address</li>
+                    <li>Basic Web Builder</li>
+                    <li>No SSL Certificate</li>
+                    <li>Limited Support</li>
+                </ul>
+                <button>Add to Cart</button>
+            </div>
+            <div class="card">
+                <p class="text">Starter</p>
+                <h2 class="hh">20$ <span class="span">/month</span></h2>
+                <ul class="list">
+                    <li>2 Website</li>
+                    <li>11 GB Disk Space</li>
+                    <li>Free Email Address</li>
+                    <li>Basic Web Builder</li>
+                    <li>No SSL Certificate</li>
+                    <li>Limited Support</li>
+                </ul>
+                <button>Add to Cart</button>
+            </div>
+            <div class="card">
+                <p class="text">Starter</p>
+                <h2 class="hh">21$ <span class="span">/month</span></h2>
+                <ul class="list">
+                    <li>3 Website</li>
+                    <li>12 GB Disk Space</li>
+                    <li>Free Email Address</li>
+                    <li>Basic Web Builder</li>
+                    <li>No SSL Certificate</li>
+                    <li>Limited Support</li>
+                </ul>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

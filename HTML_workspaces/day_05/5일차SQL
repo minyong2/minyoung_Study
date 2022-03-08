@@ -1,0 +1,25 @@
+***SQL***
+
+DDL (auto commit)
+1. CREATE
+=> 테이블 생성!
+
+CREATE TABLE student (
+    id INT(11) NOT NULL,                   
+    name  VARCHAR(20) NOT null auto_increment,
+    height INT(5),
+    age INT(5) DEFAULT 0,
+    create_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    constraint student_id_pk primary key(id) #제약조건 constraint 
+)
+CREATE TABLE student (
+    id INT(11) NOT NULL,                   
+    name  VARCHAR(20) NOT null auto_increment primary key,      #<< 마지막 줄 삭제하고 이렇게도 가능
+    height INT(5),
+    age INT(5) DEFAULT 0,
+    create_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) #>> 이 전체를 '스키마' 라고 함
+
+
+2. DROP
+3. ALTER

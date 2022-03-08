@@ -4,8 +4,9 @@
     /* 자주 사용하는 색상 모음 */
     /* 자주 사용하는 색상에 변수 이름을 만듦. */
     --mainColor:rgba(153, 196, 96, 0.5);
-    --secondaryColor:#fff;
-    --borderColor:rgb(255, 255, 255);
+    --secondaryColor:rgb(209, 209, 209);
+    --borderColor:rgb(156, 156, 156);
+    --mac_color:rgb(231, 231, 231);
 
 }
 *{
@@ -13,20 +14,19 @@
     padding: 0;
     box-sizing: border-box;
 }
-.project-container h3{
-    font-family: 'Rock Salt', cursive;
-}
 h6{
     font-family: "Russo One",sans-serif;
     font-weight: 500;
 }
 .section{
+    /* border: 3px solid ; */
     background-color: var(--mainColor);
     border-bottom: 1px solid var(--borderColor);
     padding: 5px;
 }
 .project-container{
-    width: 1200px;
+    width: 100%;
+    height: auto;
     /* border: 3px solid; */
     margin: 10px auto;
 }
@@ -34,11 +34,13 @@ h6{
     font-size: 28px;
     text-align: center;
     margin: 28px 0;
+    font-family: 'Rock Salt', cursive;
 }
 .post-wrapper{
     display: grid;
     grid-template-columns: repeat(auto-fit,280px);
     gap: 20px;
+    justify-content: center;
     /* border: 3px solid #17a2b8; */
     margin-top: 100px;
     
@@ -76,4 +78,212 @@ h6{
     border: 1px solid var(--borderColor);
     border-radius: 5px;
     box-shadow: -2px 7px 12px -3px pink;
+}
+
+.main-container{
+    width: 1200px;
+    height: 615px;
+    margin: 0 auto;
+}
+
+.about-wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0;
+}
+
+.about-me{
+    width: 550px;
+    height: auto;
+}
+
+.about-me p{
+    margin: 16px 0;
+}
+.about-me h4{
+    font-size: 24px;
+    margin: 32px 0;
+}
+
+.skills{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--mainColor);
+    border-radius: 10px;
+}
+
+.skills ul{
+    list-style: none;
+    padding-left: 40px;
+    padding: 16px 0;
+}
+
+.skills ul li{
+    color: #4b5156;
+}
+
+.social-link{
+    width: 550px;
+    height: auto;
+
+}
+.social-link img{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+    border: 1px solid gray;
+}
+
+.social-link h3{
+    text-align: center;
+    margin-top: 28px;
+    font-size: 28px;
+}
+
+.github{
+    text-align: center;
+}
+
+.github a{
+    font-size: 18px;
+    text-decoration: none;
+    color: #17a2b8;
+}
+
+header{
+    background-color: var(--mac_color);
+    border-bottom: var(--secondaryColor);
+}
+
+.greeting-wrapper{
+    padding: 46px 0;
+}
+.greeting-wrapper h1{
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Rock Salt', cursive;
+}
+.intro-wrapper{
+    background-color: white;
+    border: 1px solid var(--borderColor);
+    /* border-radius: (위 왼쪽)(위 오른쪽)(아래 오른쪽)(아래 왼쪽); */
+    border-radius: 5px 5px 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: -1px 1px 3px -1px black;
+    grid-template-areas: "nav-wrapper nav-wrapper" "info-wrapper do-wrapper";
+}
+.nav-wrapper{
+    width: 100%;
+    grid-area: nav-wrapper;
+    border-bottom: var(--borderColor);
+    background-color: var(--mac_color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#dot1{
+    /* 아이디는 #으로 선언 */
+    /* 클래스는 .으로 선언 */
+    background-color: #fc6058;
+
+}
+#dot2{
+    background-color: #fec02f;
+}
+#dot3{
+    background-color: #2aca3e;
+}
+
+
+/* dot:맥 종료,축소,확대 버튼 */
+.dot{
+    cursor: pointer;
+    background-color: black;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin: 8px;
+    box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+    transition: 0.3s;
+}
+.dot:hover{
+    transform: scale(1.15);
+}
+.dots-wrapper{
+    display: flex;
+    padding: 10px;
+}
+.info-wrapper{
+    grid-area: info-wrapper;
+    padding: 30px 0;
+}
+
+.info-wrapper img{
+    display: block;
+    width: 230px;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.info-wrapper h5{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.do-wrapper{
+    grid-area: do-wrapper;
+    padding: 50px;
+}
+.preview-shadow{
+    padding-left: 30px;
+    padding-top: 30px;
+    width: 300px;
+    height: 180px;
+    background-color: rgba(153, 196, 96, 0.212);
+}
+.preview{
+    width: 330px;
+    border: 1.5px solid rgba(129, 165, 83, 0.884);
+    background-color: white;
+    padding: 15px;
+    position: relative;
+}
+.corner{
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 1.5px solid rgb(223, 136, 211);
+    position: absolute;
+}
+
+#corner-tl{
+    top: -5px;
+    left: -5px;
+}
+
+#corner-tr{
+    top: -5px;
+    right: -5px;
+}
+#corner-br{
+    bottom: -5px;
+    right: -5px;
+}
+#corner-bl{
+    bottom: -5px;
+    left: -5px;
+}
+.preview h3{
+    font-size: 28px;
+    margin: 28px 0;
+}
+
+.preview p{
+    font-size: 18px;
+    color: #4b5156;
+    margin: 16px 0;
 }

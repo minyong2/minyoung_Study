@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+            background-color: rgb(167, 221, 160);
+        }
+
+        .menu li{
+            display: inline-block;
+            border: 1px solid #000;
+            width: 100px;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgb(206, 155, 206);
+            opacity: 0;
+            visibility: hidden;
+        }
+        .menu-sub li:hover{
+            background-color: pink;
+        }
+        .menu .menu-item:hover .menu-sub{
+            opacity: 1;
+            visibility: visible;
+        }
+        .top{
+            font-size: 20px;
+            font-weight: 800;
+            color: rgb(255, 255, 255);
+            background-color: rgba(240, 248, 255, 0);
+            border: 1px solid ;
+            padding: 5%;
+            cursor: pointer;
+            text-decoration: none;
+            position: absolute;
+        }
+    </style>
+    <title>Drop Down</title>
+</head>
+<body>
+    <header>
+        <button class="top">dropdown</button>
+            <ul class="menu">
+                <li class="inner"><a href="#">subMenu</a></li>
+                <li class="inner"><a href="#">subMenu</a></li>
+                <li class="inner"><a href="#">subMenu</a></li>
+            </ul>
+    </header>
+    
+</body>
+</html>

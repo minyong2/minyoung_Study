@@ -1,0 +1,89 @@
+☆★☆★☆★☆★☆★UserVO☆★☆★☆★☆★☆★☆★
+package 클래스;
+
+public class UserVO {
+	private int id;
+	private String name;
+	private String email;
+	private String phone;
+	private boolean isLogin;
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public boolean isLogin() {
+		return isLogin;
+	}
+	public void setLogin(boolean isLogin) {
+		this.isLogin = isLogin;
+	}
+}
+☆★☆★☆★☆★☆★MainService☆★☆★☆★☆★☆★
+package 클래스;
+
+public class MainService {
+	public static void setUser(UserVO x) {
+		System.out.println("id : " +x.getId());		
+		System.out.println("name : "+x.getName());
+		System.out.println("Login : " + x.isLogin());
+	}
+	public static int getUser(int x) {
+		UserVO vo = new UserVO();
+		if(x<1||x>100) {
+			
+		}	
+		
+		vo.isLogin();
+		vo.setId(x);
+		vo.getName();
+		vo.getEmail();
+		vo.getPhone();
+		
+		return 0;
+	}
+}
+☆★☆★☆★☆★☆★MainController☆★☆★☆★☆★☆★
+package 클래스;
+
+public class MainController {
+
+	public static void main(String[] args) {
+		UserVO vo = new UserVO();
+		MainService ms = new MainService();
+		
+		vo.setName("현상원");
+		vo.setId(30);
+		vo.setEmail("owow77@naver.com");
+		vo.setPhone("010-5390-2530");
+		vo.setLogin(true);
+		
+		ms.setUser(vo);
+	}
+}
+
+☆★☆★☆★☆★☆★Console☆★☆★☆★☆★☆★
+id : 30
+name : 현상원
+Login : true

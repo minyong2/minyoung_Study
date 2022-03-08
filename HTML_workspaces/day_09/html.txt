@@ -1,0 +1,28 @@
+header : 메뉴(navigation), 머릿글, 사이트 로고 , etc ...
+        로고와 메뉴는 한 div로 묶어줌.
+
+         <header>
+            <div class="nav">
+                <!-- logo,menu -->
+                <img class="logo" src="butterfly.png" alt="">
+                <div class="nav-links">
+                    <!-- ul > li*4 -->
+                    <!-- X버튼 태그 위치 -->
+                    <ul>
+                        <li><a href="#"> HOME</a></li>
+                        <li><a href="#">MENU</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="txt">
+                <h1>Flower Breeze</h1>
+                <p> </p>
+                <!-- 링크태그를 마치 버튼처럼 꾸밀 예정 -->
+                <!-- <a class="bt" href="#">INTRODUCE</a> -->
+            </div>
+        </header>
+        

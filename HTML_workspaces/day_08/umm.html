@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      .flex-container {
+        height: 100vh;
+        /* 크기를 왜줄까? : 컨테이너 영역 크기가 없어서 가운데 정렬이 안됨
+        그래서 최대로 늘려줘야 item의 이동이 가능함 (웹 f12키로 확인해보기)*/
+        align-items: center;
+        /* inline block을 대체함 */
+        display: flex;
+        /* default: row */
+        flex-direction: row;
+        /* 메뉴 가로배열 : row 
+        세로배열: column */
+        justify-content:space-around;
+        /* justify-content: space-between;  */
+        /* 아이템들의 간격 조절*/ 
+        flex-wrap: wrap;
+        /* 화면 작아지면 속성들이 화면에 맞춰서 배치됨 */
+      }
+
+      .item {
+        /* 10개의 item들의 전역변수!! */
+        width: 100px;
+        height: 70px;
+        border: 1px solid darkcyan;
+      }
+      .item1 {
+        background-color: #ef9a9a;
+      }
+      .item2 {
+        background-color: #f48fb1;
+      }
+      .item3 {
+        background-color: #ce93d8;
+      }
+      .item4 {
+        background-color: #b39ddb;
+      }
+      .item5 {
+        background-color: #90caf9;
+      }
+      .item6 {
+        background-color: #a5d6a7;
+      }
+      .item7 {
+        background-color: #e6ee9c;
+      }
+      .item8 {
+        background-color: #fff59d;
+      }
+      .item9 {
+        background-color: #ffcc80;
+      }
+      .item10 {
+        background-color: #d52c0f;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>flex 만들기</h1>
+      <div class="flex-container">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+        <div class="item item4">4</div>
+        <div class="item item5">5</div>
+        <div class="item item6">6</div>
+        <div class="item item7">7</div>
+        <div class="item item8">8</div>
+        <div class="item item9">9</div>
+        <div class="item item10">10</div>
+        <!-- div.item.item${$}*10  -->
+
+
+        
+      </div>
+    </div>
+  </body>
+</html>

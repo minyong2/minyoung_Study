@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            background-color: #778;
+        }
+        .dashboard-graph{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 30px;
+            padding: 2%;
+        }
+        .dashboard-graph-circle{
+            width: 100%;
+            height: auto;
+            background-color: #FFF;
+            padding: 6% 3%;
+            border-radius: 15px;
+        }
+        .dashboard-graph-circle h3{
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 5%;
+        }
+        .dashboard-graph-circle p{
+            text-align: left;
+            width: 60%;
+
+        }
+        .yellow {
+            border-top: 7px solid #f6c23e;
+    
+        }
+        
+        .yellow h1{
+            text-align: center;
+
+        }
+        .num {
+            position: absolute;
+            margin: 115px 108px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-graph">
+            <!-- 그래프관련 대시보드 -->
+            <div class="dashboard-graph-circle">
+                <!-- circle 그래프 UI -->
+                <h3>올해 매출액</h3>
+                <p>목표 매출액 : <spna>80%</spna></p>
+                <p>작년 매출액 : <span>60.5%</span></p>
+                <div class="border yellow">
+                    <!-- 그래프를 여기에 넣을 예정 -->
+                    <h1 class="num">85%</h1>
+                    <canvas id="myChart1">
+                        <!-- id는 중복 불가능 class는 중복 가능 -->
+                        <!-- canvas : html에 그림을 그릴 수 있는 일종의 컨테이너 태그 -->
+                    </canvas>
+                </div>
+            </div>
+            <div class="dashboard-graph-circle">
+                <!-- circle 그래프 UI -->
+                <h3>올해 매출액</h3>
+                <p>목표 매출액 : <spna>80%</spna></p>
+                <p>작년 매출액 : <span>60.5%</span></p>
+                <div class="border yellow">
+                    <!-- 그래프를 여기에 넣을 예정 -->
+                    <h1 class="num">68%</h1>
+                    <canvas id="myChart2">
+                        <!-- id는 중복 불가능 class는 중복 가능 -->
+                        <!-- canvas : html에 그림을 그릴 수 있는 일종의 컨테이너 태그 -->
+    
+                    </canvas>
+                </div>
+            </div>
+            <div class="dashboard-graph-circle">
+                <!-- circle 그래프 UI -->
+                <h3>올해 매출액</h3>
+                <p>목표 매출액 : <spna>80%</spna></p>
+                <p>작년 매출액 : <span>60.5%</span></p>
+                <div class="border yellow">
+                    <!-- 그래프를 여기에 넣을 예정 -->
+                    <h1 class="num">96%</h1>
+                    <canvas id="myChart3">
+                        <!-- id는 중복 불가능 class는 중복 가능 -->
+                        <!-- canvas : html에 그림을 그릴 수 있는 일종의 컨테이너 태그 -->
+    
+                    </canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- script 작성 -->
+    <script>
+        // 그래프에 데이터를 넣기 위해서는 코딩이 필요.
+        // 상수 변수명은 대문자로 (암묵적 룰)
+        const DATA_SETTINGS = {
+            //json (Key,Value로 구성) 프론트에만 사용하는게 아님
+            //Key : 중복 불가능 (고유한 값)
+            //Value : 데이터타입이 온다~ (문자형,정수형,논리형(boolean), 배열 ...)
+            datasets:[
+                {
+                label : "2022 매출 통계",
+                data : [20,80],
+                backgroundColor : ["rgb(245,245,245)","rgb(255,205,86)"]
+                }
+            ],
+        };
+
+        const MY_CHART_DATA = {
+            type : "doughnut",
+            data : DATA_SETTINGS,
+        };
+
+// ------------------------------------------------------------------------------------
+        const DATA_PINKS ={
+        datasets:[
+            {
+                label : "2022 햄버거먹고싶다",
+                data : [38,62],
+                backgroundColor :["rgba(255,109,255,0.2)","rgba(255,109,255,0.5)"]
+            }
+        ],
+    };
+
+        const MY_CHART_PINKS = {
+            type : "doughnut",
+            data : DATA_PINKS,
+        };
+// ------------------------------------------------------------------------------------
+        const DATA_GREENS ={
+            datasets : [
+                {
+                    label : "2022 발이너무시렵다",
+                    data : [4,96],
+                    backgroundColor :["rgba(153, 196, 96, 0.1)","rgba(153, 196, 96, 0.5)"]
+                }
+            ],
+        };
+
+        const MY_CHART_GREENS ={
+            type : "doughnut",
+            data : DATA_GREENS,
+        }
+
+        // 차트를 생성할 준비
+        // 프로그래밍에서 new 키워드가 있으면 객체지향언어를 의미
+        // where? (어디에다 넣을지 지정)
+        new Chart(document.getElementById("myChart1"),MY_CHART_DATA);
+        new Chart(document.getElementById("myChart2"),MY_CHART_PINKS);
+        new Chart(document.getElementById("myChart3"),MY_CHART_GREENS);
+    </script>
+</body>
+</html>

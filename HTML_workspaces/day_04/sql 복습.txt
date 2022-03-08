@@ -1,0 +1,22 @@
+DML
+1. Select 
+2. Delete
+3. Update
+4. Insert
+
+SELECT 컬럼,
+FROM 테이블 이름
+WHERE 필터링 조건
+(>, =, <, like)
+GROUP BY
+HAVING (sum,avg,min,max)
+ORDER BY 정렬 ASC(디폴트값),DESC
+LIMIT 데이터 row 강제로 자를 때
+
+SQL 실행순서
+FROM - WHERE - GROUP BY - HAVING - SELECT - ORDER BY
+
+테이블 : 실제 데이터를 저장하는 공간
+데이터베이스 : 실제 테이블을 저장하는 공간
+
+데이터베이스 -> 테이블 -> 데이터

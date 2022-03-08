@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .top {
+            margin-top: 10px;
+            width: 300px;
+            font-size: 50px;
+            font-style: italic;
+            margin: 0 auto;
+
+            text-decoration-line: none;
+            color: black;
+            display: block;
+        }
+        .la{
+            display: flex;
+            justify-content: space-around;
+            list-style-type: none;
+            background-color: rgba(129, 129, 129, 0.616);
+            padding: 8px 16px;
+            margin: 10px 0;
+            width: 100%;
+            height: 60px;
+        }
+        .active{
+            text-decoration-line: none;
+            color: white;
+            font-weight: 800;
+            font-size: 30px;
+            
+        }
+
+        mark.use{
+            /* mark 색상지정 */
+            background-color: #ddecff;
+
+        }
+        .highlight{
+            background-color: blanchedalmond;
+
+        }
+        .half-highlight{
+            /* 얇은 형광팬 */
+            background: linear-gradient(to top, #ffffbb 50%, transparent 50%);
+
+        }
+        .gra-highlight{
+            background: linear-gradient(to right, #fd88ffcc, rgba(194, 164, 255, 0.801)ff);
+
+        }
+        .highlight_up{
+            background-image: linear-gradient(12-deg, #2bffcb 0%, #54fff9 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 0%;
+            background-position: 0 88%;
+            transition: 0.23s ease-in;
+
+        }
+        .highlight_up:hover{
+            background-size: 100% 50%;
+        }
+        .infopt{
+            position: relative;
+            display: flex;
+            width: 250px;
+            margin: 30px auto;
+            border: 3px solid;
+            border-radius: 100px;
+        }
+    </style>
+</head>
+<body>
+    <a class="top" href="#"><h1 class="top">MINYOUNG</h1></a>
+    <div class="container">
+        <ul class="la">
+            <li><a class="active" href="info.html">INFO</a></li>
+            <li><a class="active" href="#">PHOTO</a></li>
+            <li><a class="active" href="#">FRIEND</a></li>
+            <li><a class="active" href="#">PROPERTY</a></li>
+        </ul>
+        <img class="infopt" src="에몽1.png" alt="">
+    <p><mark class="use">포켓몬스터 5세대</mark>에 추가된 <mark class="highlight">전기쥐 포켓몬</mark>으로, 
+        <mark class="highlight">전기쥐 포켓몬</mark> 중 최초 이중 타입 포켓몬. 
+        이후 <mark class="half-highlight"> 6세대의 데덴네(+페어리)</mark>, 
+        <mark class="half-highlight">7세대의 토게데마루(+강철)와 리전 폼 라이츄(+에스퍼)</mark>, 
+        <mark class="half-highlight"> 8세대의 모르페코(+악)</mark>로 이어진다.
+        모티브는 모몬가. 
+        그래서인지 이 녀석은 <span class="highlight_up">피카츄 및  파치리스(다람쥐)</span>와 더 유사하다.</p>
+    </div>
+</body>
+</html>
