@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .row{
+            display: flex;
+            width: 1200px;
+            height: 400px;
+            margin: 50px auto;
+        }
+        .item{
+            flex-basis: 20%;
+            background-color: rgb(176, 226, 160);
+            border: 1px solid;
+        }
+        button{
+            font-size: 20px;
+            padding: 3%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="createItem()">append</button>
+        <button id="children">children</button>
+        <div class="row">
+            <div class="item" onclick="clickItem(this)">한가람식당</div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script>
+        function createItem(){
+            // $(".row").append('<div class="item"></div>')
+            var len = $(".row").children().length;
+            console.log(len);
+            if(len < 6){
+                for(var i=0; i<5; i++){
+                    $(".row").append('<div class="item"></div>')
+                }
+            }else{
+                alert("아이템 길이가 6이상입니다.");
+            }
+        }
+    </script>
+    <script>
+        // on : 이벤트를 받을 준비! (바인딩)
+        // 익명함수
+        // 자바스크립트는 매개변수로 함수가 가능하다.
+        // 자바스크립트는 리턴에 함수를 구현할 수 있다. (클로저)
+        // <!-- 아이템이 6개 이상이면 append stop -->
+        $('#children').on('click',function(){
+            var len = $(".row").children().length;
+            console.log(len);
+            console.log($(".row").children());
+        });
+    </script>
+    <script>
+        function clickItem(value){
+            console.log(value);
+        }
+    </script>
+</body>
+</html>
