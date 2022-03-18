@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        margin: 100px auto;
+        background: rgba(232, 232, 232, 0.5);
+        width: 800px;
+        height: auto;
+        padding: 3%;
+      }
+      .container h1 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      .container input {
+        width: 100%;
+        height: 30px;
+        margin-bottom: 5px;
+      }
+      .container select {
+        width: 100%;
+        height: 30px;
+        margin-bottom: 5px;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+      .row input {
+        flex-basis: 30%;
+      }
+      .row select {
+        flex-basis: 30%;
+      }
+      button {
+        color: #fff;
+        border: solid 1px rgba(0, 0, 0, 0.08);
+        background-color: #03c75a;
+        width: 100%;
+        padding: 15px 0 15px;
+        margin-top: 10px;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>회원 가입</h1>
+      <label for="userId">아이디</label>
+      <input id="userId" type="text" />
+      <label for="password">비밀번호</label>
+      <input id="password" type="password" />
+      <label for="rePassword">비밀번호 재확인</label>
+      <input id="rePassword" type="password" />
+      <label for="userName">이름</label>
+      <input id="userName" type="text" />
+      <label for="yy">생년월일</label>
+      <div class="row">
+        <input id="yy" type="text" placeholder="년(4자)" />
+        <select name="gender" id="pet-select">
+          <option selected>월</option>
+          <option value="01">1</option>
+          <option value="02">2</option>
+          <option value="03">3</option>
+          <option value="04">4</option>
+          <option value="05">5</option>
+          <option value="06">6</option>
+          <option value="07">7</option>
+          <option value="08">8</option>
+          <option value="09">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <label for="dd"></label>
+        <input id="dd" type="text" placeholder="일" />
+      </div>
+      <label for="gender">성별</label>
+      <select name="gender" id="gender">
+        <option value="N" selected>성별</option>
+        <option value="M">남자</option>
+        <option value="G">여자</option>
+      </select>
+      <button type="button" onclick="join()">가입하기</button>
+    </div>
+    <script>
+      function join(){
+        $("#userId");
+      }
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function join() {
+        // ===============아이디 확인란
+        var userId = $("#userId").val().trim(); //메소드 체이닝
+        // userId.trim();
+        var id_len = userId.length;
+        if(userId==''){
+          alert('아이디를 입력해주세요.')
+          $("#userId").focus();
+          return false;
+        }
+        if(id_len>=20){
+          alert('아이디가 너무 깁니다.')
+          $("#userId").focus();
+          return false;
+        }
+        // ===============패스워드 확인란
+        var password = $("#password").val().trim();
+        var pass_len = password.length;
+        if(password==''){
+          alert('비밀번호를 입력해주세요.');
+          $("#password").focus();
+          return false;
+        }
+        if(pass_len < 8){
+          alert('비밀번호가 너무 짧습니다 (8~16글자)')
+          $("#password").focus();
+        }
+        // =============== 패스워드 재확인 확인란
+        var rePassword = $("#rePassword").val().trim();
+        if(password != rePassword){
+          alert('비밀번호가 서로 다릅니다.')
+          $("#rePassword").focus();
+        }
+
+
+        var userName = $("#userName").val().trim();
+        if(checkName(userName)){
+          console.log("한글 이름 입니다.");
+        }else{
+          console.log("한글 이름을 입력해주세요.")
+          $("#rePassword").focus();
+        }
+
+        var year = $("#yy").val().trim();
+        var day = $("#dd").val().trim();
+        if(!checkNumber(year)||!checkNumber(day)){
+          alert("숫자만 입력해주세요")
+          
+          return false;
+        }
+        var gender = $("#gender option:selected").val();
+        console.log(gender);
+        if(gender == 'N'){
+          alert("성별을 선택하세요")
+          $("#gender").focus();
+          return false;
+        }
+
+        var isResult = confirm("회원가입을 하시겠습니까?");
+        if(isResult){
+          alert("회원가입이 완료되었습니다.");
+        }
+      }
+
+      //정규표현식 함수
+      function checkName(name){
+        var regex = /^[가-힣]+$/; //> 정규표현식(한글 이름만 찾기)
+        return regex.test(name)
+      }
+
+      function checkNumber(num){
+        var regex2 = /^[0-9]+$/
+        return regex2.test(num)
+      }
+      
+    </script>
+  </body>
+</html>
