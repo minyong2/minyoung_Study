@@ -7,108 +7,64 @@
     <title>Document</title>
     <style>
         *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .red{
-            width: 500px;
-            height: 500px;
-            
+
         }
     </style>
 </head>
 <body>
-    <!-- id는 중복 불가능 -->
-    <div id="red" class="red">
-     
-        <input id="order" type="text" value="아메리카노">
-       <select id="menu">
-        <option value="none" selected>---커피를 선택하시오---</option>
-           <option value="americano">아메리카노</option>
-           <option value="icetea">아이스티</option>
-           <option value="latte">카페라떼</option>
-           
-       </select>
+    <div class="container">
+        <ul>
+            <li id="boxing">복싱</li>
+            <li><p>수영</p></li>
+            <li>유도</li>
+            <li>헬스</li>
+            <li>태권도</li>
+        </ul>
+        <ul></ul>
+        <div>사격</div>
     </div>
-
+    <div class="text-wrapper">
+        <!-- for문을 이용해서 인풋 아이디와 밸류 콘솔로그 프린트 -->
+        <input type="text" id="userName" value="박카스">
+        <input type="text" id="userEmail" value="박카스@gmail.com">
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-<script>
-     // 페이지 로딩시 가장 처음 실행 해주는 함수
-    $(function(){
-       var id = $('.red').attr('id');
-    //   id = red 인 태그의 속성 중 id를 가져와줘. 그래서 id 이름을 변수에 리턴해준 것임
-    // attribute : 속성
-       console.log(id)
-       $('.red').attr('id', 'black');
-    //   이름 바꾸기 : id를 red -> black으로 수정 
-    // attr(속성 , 바꾸고자 하는 value)
-    // attr는 속성 이름을 호출할 수 있고, 속성 값을 수정할 수도 있다.(2가지 기능)
     
-    $('.red').attr('style', 'background-color: skyblue');
-
-
-    //문제1 input val를 가져와서, 해당 option에 selected
-
-    var orderMenu = $('#order').val();
-    if(orderMenu === '아메리카노'){
-        $('#menu option:eq(1)').attr('selected','selected');
-        // option:eq(1): option 1번째 (option은 0부터 시작)
-        // atrr('selected','selected') selected 속성에 selected 값 넣기 : selected의 속성을 selected 하겠다.
-        // menu의 option 1번째로 selected됨 (아메리카노)
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script>
+        var containerChildren = $('.container').children();
+        // console.log(containerChildren);
         
-    }
 
-    if(orderMenu === '아이스티'){
-        $('#menu option:eq(2)').attr('selected','selected');
-    }
+    
+        // 복싱 찾기
+        console.log(containerChildren[0].children[0].innerHTML);
+        // 복싱 id 찾기
+        console.log(containerChildren[0].children[0].id)
 
+        console.log(containerChildren[0].children.length);
+        var len = containerChildren[0].children.length;
 
-    if(orderMenu === '카페라떼'){
-        $('#menu option:eq(3)').attr('selected','selected');
-    }
-
-    // 결과 : input과 select창의 메뉴명이 같아짐
-    });
-
-// keyup : 키보드를 눌렀다 뗐을때 이벤트 발생
-// keydown : 키보드를 눌렀을 때 실행
-    $('#order').on('keyup', function(e){
-        // keyup 이벤트 발생 -> 익명함수 파라미터에 이벤트 json을 넘겨준다
-        console.log(e);
-        if(e.keyCode == 13) {
-             // enter의 key number는 13
-            // key의 keyCode가 13이라면 
-            // 엔터 눌렀을 때 실행코드
-            var orderMenu =  $('#order').val();
-            if(orderMenu === '아메리카노'){
-        $('#menu option:eq(1)').attr('selected','selected');
-        $('#menu option:eq(2)').removeAttr('selected');
-        $('#menu option:eq(3)').removeAttr('selected');
-        // 이미 아메리카노로 selected 되어 있으니까 나머지 2,3 option의 속성을 지워줌
-    }
-
-    if(orderMenu === '아이스티'){
-        $('#menu option:eq(2)').attr('selected','selected');
-        $('#menu option:eq(1)').removeAttr('selected');
-        $('#menu option:eq(3)').removeAttr('selected');
-    }
-
-
-    if(orderMenu === '카페라떼'){
-        $('#menu option:eq(3)').attr('selected','selected');
-        $('#menu option:eq(1)').removeAttr('selected');
-        $('#menu option:eq(2)').removeAttr('selected');
+        for(var i=0; i<len; i++){
+            var innerText = containerChildren[0].children[i].innerHTML;
+            console.log(innerText)
         }
-    }
-    //결과 : input에 메뉴명을 입력하고 enter하면 select 창에 동일한 메뉴명이 뜸
-});
-   
-</script>
+
+        console.log("===========================")
+        // step 1 value 찾기
+        var textWrapper = $('.text-wrapper').children();
+        for(var i=0; i < textWrapper.length; i++){
+            console.log(textWrapper[i].id)
+        }
+        // console.log(textWrapper)
+        // step 2 value 찾기
+        console.log($('#' + textWrapper[0].id).val());
+        console.log($('#userName').val());
+        var x = 'userName';
+        console.log($('#' + x).val());
+
+    </script>
 </body>
 </html>
