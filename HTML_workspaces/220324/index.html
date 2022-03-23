@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li id="boxing">복싱</li>
+            <li><p>수영</p></li>
+            <li>유도</li>
+            <li>헬스</li>
+            <li>태권도</li>
+        </ul>
+        <ul></ul>
+        <div>사격</div>
+    </div>
+    <div class="text-wrapper">
+        <!-- for문을 이용해서 인풋 아이디와 밸류 콘솔로그 프린트 -->
+        <input type="text" id="userName" value="박카스">
+        <input type="text" id="userEmail" value="박카스@gmail.com">
+    </div>
+    
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script>
+        var containerChildren = $('.container').children();
+        // console.log(containerChildren);
+        
+
+    
+        // 복싱 찾기
+        console.log(containerChildren[0].children[0].innerHTML);
+        // 복싱 id 찾기
+        console.log(containerChildren[0].children[0].id)
+
+        console.log(containerChildren[0].children.length);
+        var len = containerChildren[0].children.length;
+
+        for(var i=0; i<len; i++){
+            var innerText = containerChildren[0].children[i].innerHTML;
+            console.log(innerText)
+        }
+
+        console.log("===========================")
+        // step 1 value 찾기
+        var textWrapper = $('.text-wrapper').children();
+        for(var i=0; i < textWrapper.length; i++){
+            console.log(textWrapper[i].id)
+        }
+        // console.log(textWrapper)
+        // step 2 value 찾기
+        console.log($('#' + textWrapper[0].id).val());
+        console.log($('#userName').val());
+        var x = 'userName';
+        console.log($('#' + x).val());
+
+    </script>
+</body>
+</html>
