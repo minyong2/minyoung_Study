@@ -23,7 +23,7 @@
             </div>
             <div class="pass">
                 <label for="login-status">로그인 상태 유지</label>
-                <input type="checkbox" id="login-status" value="stay" />
+                <input type="checkbox" id="login-status" value="stay" onclick="infoCheck()" />
             </div>
             <input class="login-btn" type="butten"  value="로그인" onclick="join()" />
             <div class="signup-link">회원이 아닌가요? <a href="#">회원가입</a></div>
@@ -69,9 +69,11 @@
 
         }
 
-        $('#login-status').click(function(){
-            confirm("로그인 상태를 유지하시겠습니까?")
-        })
+        function infoCheck(){
+        var check = $('#login-status').is(':checked');
+        if(check){
+            confirm('해당 브라우저에 로그인 정보를 저장하시겠습니까?')
+        }}
     </script>
 </body>
 
