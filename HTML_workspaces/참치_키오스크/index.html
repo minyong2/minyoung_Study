@@ -28,7 +28,7 @@
                     <div class="menu-info">
                         <h6>참다랑어 뱃살</h6>
                         <p>숙성 : <span>8일 숙성</span></p>
-                        <p>가격 : <span id="money">22,000</span></p>
+                        <p>가격 : <span onclick="doCalc(this)">22,000</span></p>
                         <a href="#">담기</a>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <div class="menu-info">
                         <h6>참다랑어 뱃살</h6>
                         <p>숙성 : <span>2일 숙성</span></p>
-                        <p>가격 : <span id="money">10,000</span></p>
+                        <p>가격 : <span onclick="doCalc(this)">10,000</span></p>
                         <a href="#">담기</a>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                     <div class="menu-info">
                         <h6>참다랑어 등살</h6>
                         <p>숙성 : <span>3일 숙성</span></p>
-                        <p>가격 : <span id="money">12,000</span></p>
+                        <p>가격 : <span onclick="doCalc(this)">12,000</span></p>
                         <a href="#">담기</a>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <div class="menu-info">
                         <h6>참다랑어 뱃살</h6>
                         <p>숙성 : <span>5일 숙성</span></p>
-                        <p>가격 : <span id="money">16,000</span></p>
+                        <p>가격 : <span onclick="doCalc(this)">16,000</span></p>
                         <a href="#">담기</a>
                     </div>
                 </div>
@@ -109,20 +109,10 @@
                     }
                 })
 
-
-
-
                 var sum = 0;
-            
-                function doCalc(){
-                    
-                }
 
-
-
-
-                $('.menu-info a').click(function(){
-                    var string = $('#money').text();
+                $('.menu-info a').click(function doCalc(){
+                    var string = $('.menu-info span').text();
                     var no = string.replace(/[^0-9]/g,'');
                     var money = parseInt(no);
                     sum += money;
