@@ -28,8 +28,8 @@
                     <div class="menu-info">
                         <h6>참다랑어 뱃살</h6>
                         <p>숙성 : <span>8일 숙성</span></p>
-                        <p>가격 : <span onclick="doCalc(this)">22,000</span></p>
-                        <a href="#">담기</a>
+                        <p>가격 : <span id="money1">22,000</span></p>
+                        <a href="#" id="cart1">담기</a>
                     </div>
                 </div>
                 <div class="menu">
@@ -37,8 +37,8 @@
                     <div class="menu-info">
                         <h6>참다랑어 뱃살</h6>
                         <p>숙성 : <span>2일 숙성</span></p>
-                        <p>가격 : <span onclick="doCalc(this)">10,000</span></p>
-                        <a href="#">담기</a>
+                        <p>가격 : <span id="money2">10,000</span></p>
+                        <a href="#" id="cart2">담기</a>
                     </div>
                 </div>
                 <div class="menu">
@@ -46,8 +46,8 @@
                     <div class="menu-info">
                         <h6>참다랑어 등살</h6>
                         <p>숙성 : <span>3일 숙성</span></p>
-                        <p>가격 : <span onclick="doCalc(this)">12,000</span></p>
-                        <a href="#">담기</a>
+                        <p>가격 : <span id="money3">12,000</span></p>
+                        <a href="#" id="cart3">담기</a>
                     </div>
                 </div>
                 <div class="menu">
@@ -55,8 +55,8 @@
                     <div class="menu-info">
                         <h6>참다랑어 뱃살</h6>
                         <p>숙성 : <span>5일 숙성</span></p>
-                        <p>가격 : <span onclick="doCalc(this)">16,000</span></p>
-                        <a href="#">담기</a>
+                        <p>가격 : <span id="money4" >16,000</span></p>
+                        <a href="#" id="cart4">담기</a>
                     </div>
                 </div>
                 <div class="menu">
@@ -64,8 +64,8 @@
                     <div class="menu-info">
                         <h6>참다랑어 스페셜 세트</h6>
                         <p>숙성 : <span>5일 숙성</span></p>
-                        <p>가격 : <span id="">32,000</span></p>
-                        <a href="#" onclick="" id="sold-out" style="color: red">품절</a>
+                        <p>가격 : <span id="money4">32,000</span></p>
+                        <a href="#" class="sold-out" style="color: red">품절</a>
                     </div>
                 </div>
             </div>
@@ -111,20 +111,54 @@
 
                 var sum = 0;
 
-                $('.menu-info a').click(function doCalc(){
-                    var string = $('.menu-info span').text();
+                $('#cart1').click(function(){
+                    var string = $('#money1').text();
                     var no = string.replace(/[^0-9]/g,'');
-                    var money = parseInt(no);
-                    sum += money;
+                    var money = parseInt(no);  
+                    $('#total').html((sum += money));
+                    if(sum > 100000){
+                        alert("10만원이 넘을 수 없습니다.")
+                        return false;
+                    }
+                    console.log(sum)
+                })
 
+                $('#cart2').click(function(){
+                    var string = $('#money2').text();
+                    var no = string.replace(/[^0-9]/g,'');
+                    var money = parseInt(no);  
+                    $('#total').html((sum += money));
+                    if(sum > 100000){
+                        alert("10만원이 넘을 수 없습니다.")
+                        return false;
+                    }
+                    console.log(sum)
+                })
+
+                $('#cart3').click(function(){
+                    var string = $('#money3').text();
+                    var no = string.replace(/[^0-9]/g,'');
+                    var money = parseInt(no);  
+                    $('#total').html((sum += money));
                     if(sum > 100000){
                         return false;
                     }
                     console.log(sum)
-                    $('#total').val(sum)
                 })
 
-            $('#sold-out').click(function(){
+                $('#cart4').click(function(){
+                    var string = $('#money4').text();
+                    var no = string.replace(/[^0-9]/g,'');
+                    var money = parseInt(no);  
+                    $('#total').html((sum += money));
+                    if(sum > 100000){
+                        alert("10만원이 넘을 수 없습니다.")
+                        return false;
+                    }
+                    console.log(sum)
+                })
+
+            $('.sold-out').click(function(){
                 alert("품절 상품입니다.")
             })
 
