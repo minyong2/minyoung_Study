@@ -90,12 +90,13 @@
     <script>
       // 소스 작성
 
-      function join(){
-          var rank = $('#rank').val().trim();
-          var name = $('#name').val().trim();
-          var job = $('#job').val().trim();
-          var loc = $('#loc').val().trim();
-          var hiredate = $('#hiredate').val().trim();
+    function join(){
+        var arr = [];
+        var rank = $('#rank').val().trim();
+        var name = $('#name').val().trim();
+        var job = $('#job').val().trim();
+        var loc = $('#loc').val().trim();
+        var hiredate = $('#hiredate').val().trim();
 
         if(rank ==''){
             $("#rank").focus();
@@ -117,24 +118,37 @@
             alert("부서 위치를 입력하세요");
             return false;
         }
-        if(loc != "New York"||"San Francisco"||"London"){
+        // if(loc != "New York"||"San Francisco"||"London"){
             
-            return false;
-        }
-        if(hiredate ==''){
+        //     return false;
+        // }
+        if(hiredate == ''){
             $("#hiredate").focus();
             alert("입사 날짜를 입력하세요");
             return false;
         }
-      }
+
+        var rank_len = rank.length;
+        for(i=0; i=rank_len; i++){
+            arr.push(i);
+        }
+        console.log(arr)
+
+        
+        
+        
+
+    }
+
+
         /*
         2번 문제: Office는 	New York, San Francisco, London 중 한 곳입니다.
-  
+
         3번 문제: 이미 등록된 랭킹은 중복될 수 없습니다.
-  
+
         4번 문제: 1~3번 문제이어서 해당 데이터를 tbody안에 추가 하시오.
         단, 마지막 행에 추가 하시오.
-  
+
         ***5번 문제: (해당 문제는 할 수 있는 사람만 도전 해보시오.)
         ↓을 누르면 내림차순, ↑을 누르면 오름차순으로 tr을 정렬하시오.
         */
