@@ -87,72 +87,68 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script>
-      // 소스 작성
-
-    function join(){
-        var arr = [];
-        var rank = $('#rank').val().trim();
-        var name = $('#name').val().trim();
-        var job = $('#job').val().trim();
-        var loc = $('#loc').val().trim();
-        var hiredate = $('#hiredate').val().trim();
-
-        if(rank ==''){
-            $("#rank").focus();
-            alert("랭킹을 입력하세요");
-            return false;
-        }
-        if(name ==''){
-            $("#name").focus();
-            alert("이름을 입력하세요");
-            return false;
-        }
-        if(job ==''){
-            $("#job").focus();
-            alert("직업을 입력하세요");
-            return false;
-        }
-        if(loc ==''){
-            $("#loc").focus();
-            alert("부서 위치를 입력하세요");
-            return false;
-        }
-        // if(loc != "New York"||"San Francisco"||"London"){
-            
-        //     return false;
-        // }
-        if(hiredate == ''){
-            $("#hiredate").focus();
-            alert("입사 날짜를 입력하세요");
-            return false;
-        }
-
-        var rank_len = rank.length;
-        for(i=0; i=rank_len; i++){
-            arr.push(i);
-        }
-        console.log(arr)
-
-        
-        
-        
-
-    }
-
-
-        /*
-        2번 문제: Office는 	New York, San Francisco, London 중 한 곳입니다.
-
-        3번 문제: 이미 등록된 랭킹은 중복될 수 없습니다.
-
-        4번 문제: 1~3번 문제이어서 해당 데이터를 tbody안에 추가 하시오.
-        단, 마지막 행에 추가 하시오.
-
-        ***5번 문제: (해당 문제는 할 수 있는 사람만 도전 해보시오.)
-        ↓을 누르면 내림차순, ↑을 누르면 오름차순으로 tr을 정렬하시오.
-        */
-    </script>
+        <script>
+            $('#signUp').on('click',function(){
+                var forms = $('.input-wrapper').children();
+                //1번 문제: 사원등록 버튼을 클릭 했을 때 랭킹 부터 입사날짜까지 빈공간이 있으면
+                //'데이터를 입력해주세요!' alret 띄우고, 빈공간을 입력한 input에 focus를 하시오.
+                for(var i=0; i<forms.length; i++){
+                  var elementId = forms[i].id;
+                  var elementValue = forms[i].value.trim();
+                  if(elementValue === ''){
+                    alert('데이터를 입력해주세요');
+                    $('#'+elementId).focus();
+                    return false;
+                  }
+                  //2번 문제  Office는 	New York, San Francisco, London 중 한 곳입니다.
+                  if(elementId === 'loc' && !isDeptName(elementValue)){
+                    alert('Office는 New York, San Francisco, London 중 한 곳입니다.');
+                    return false;
+                  } 
+                  //3번 문제: 이미 등록된 랭킹은 중복될 수 없습니다.
+                  if(elementId === 'rank' && !isRanker(elementValue)){
+                    alert('이미 등록된 랭킹은 중복될 수 없습니다.');
+                    $('#'+elementId).focus();
+                    return false;
+                  }
+                }
+                //4번 문제: 1~3번 문제이어서 해당 데이터를 tbody안에 추가 하시오.
+                //단, 마지막 행에 추가 하시오.
+                setTableBody();
+            }); 
+            //부서 확인하기
+            function isDeptName(dname){
+              const DEPT_NAME = ['New York','San Francisco','London'];
+              var isCheck = false;
+              DEPT_NAME.forEach(function(element){
+                if(element === dname) isCheck = true;
+              });
+              return isCheck;
+            }
+            //이미 등록된 랭킹인지 확인하기
+            function isRanker(rank){
+              var isRanker = true;
+              var tbodyChildren = $('tbody').children();
+              for(var i=0; i<tbodyChildren.length; i++){
+                  var firstTdElement = tbodyChildren[i].children[0];
+                  var registeredRank = firstTdElement.innerText;
+                  if(registeredRank === rank){
+                    isRanker= false;
+                  }
+              }
+              return isRanker;
+            }
+            //tbody태그안에 데이터 넣기
+            function setTableBody(){
+              var rank = $('#rank').val().trim();
+              var name = $('#name').val().trim();
+              var job = $('#job').val().trim();
+              var loc = $('#loc').val().trim();
+              var hiredate = $('#hiredate').val().trim();
+              var innerHtml = '<tr><td>'+rank+'</td><td>'+name+'</td><td>'+job+'</td><td>'+loc+'</td><td>'+hiredate+'</td></tr>';
+              $('tbody').append(innerHtml);
+            }
+          </script>
 </body>
 
 </html>
