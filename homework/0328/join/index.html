@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <h3>스똬벅스 회원가입</h3>
+            <input id="name" type="" placeholder="회원이름을 입력해주세요..." />
+            <input id="nicname" type="" placeholder="사용할 닉네임을 입력해주세요..." />
+            <div id="e-box" class="email-box">
+                <input id="e-mail" type="text" placeholder="이메일을 입력해주세요..." />
+                <span>@</span>
+                <select id="emailList">
+                    <option id="self" value="none" selected>직접입력</option>
+                    <option value="naver">naver.com</option>
+                    <option value="gmail">gmail.com</option>
+                    <option value="hanmail">hanmail.net</option>
+                    <option value="nate">nate.com</option>
+                </select>
+            </div>
+            <input id="number" type="text" placeholder="연락처를 입력해주세요...(번호만 입력하세요)" />
+            <div class="question-box">
+                <span>회원가입에 동의하나요?</span>
+                <input id="checkBox" type="checkbox" />
+            </div>
+            <div class="join-btn">
+                <button id="button" type="button">회원 가입</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        // 문제 1 . 회원가입 버튼 눌렀을 때, 빈칸 혹은 체크하지 못한 부분이 있다면
+        //   '내용을 확인해주세요!'하는 alert을 보여주고 focus 하시오.
+        $('#button').on('click',function(){
+            // var forms = $('.form-wrapper').children();
+            var input = $('.form-wrapper input')
+            for(var i=0; i<input.length; i++){
+                var id = input[i].id;
+
+                if(input.eq(i).val()==''){
+                    alert("데이터를 입력해주십시오")
+                    $('#'+id).focus();
+                    return false;
+                }else{
+                    console.log(id+" : "+input.eq(i).val())
+                }
+
+                
+            }
+            var select = $('#emailList option:selected').text();
+            var selectOption = $('#emailList').val()
+            if(select == '직접입력'){
+                alert("이메일 주소를 확인해주세요.")
+                $('#emailList').focus();
+            }
+
+        // 문제 2 . 연락처에 '-'를 작성하면 회원가입 버튼을 눌렀을 때 제거하시오.
+        //   ex] 010-4097-0823 -> 01040970823
+        var number = $('#number').val().trim();
+        var re = /[^0-9]/g;
+            if(!checkNumber(number)){
+                //checkNumber() -> 숫자인지 아닌지 확인
+                alert("연락처는 숫자만 입력해주십시오.")
+            }  
+                var result = number.replaceAll(re,"");
+                // 숫자가 아닌애들 제거
+                console.log("번호"+result)
+            
+
+            
+            
+            // 문제 3 . 회원이름과 닉네임은 20글자 이하고 한글만 사용할 수 있습니다.
+            var userName = $('#name').val().trim();
+            var nicname = $('#nicname').val().trim();
+            var namelen = userName.length;
+            var niclen = nicname.length;
+            if(checkName(userName)){
+                alert("이름은 '한글'로만 작성해주십시오.")
+                $('#name').focus();
+                return false;
+            }
+            if(checkName(nicname)){
+                alert("닉네임은 '한글'로만 작성해주십시오.")
+                $('#nicname').focus();
+                return false;
+            }
+            if(namelen > 20){
+                alert("이름의 길이가 너무 깁니다(최대 20글자)")
+                return false;
+            }
+            if(niclen > 20){
+                alert("닉네임의 길이가 너무 깁니다(최대 20글자)")
+                return false;
+            }
+
+
+             //문제 4 . 모든 조건을 만족하고 회원가입 버튼을 누르면
+            //  input데이터를 json으로 만들어 console.log에 출력하시오.
+            submitData();
+
+
+        })
+
+
+
+        function checkName(userName){
+            var regex = /^[a-z]+$/;
+            return regex.test(userName)
+        }
+
+        function checkNumber(number){
+            var regex2 = /^[0-9]/g;
+            return regex2.test(number)
+        }
+
+        function submitData(){
+            var jsonData = {};
+            jsonData.userName = $('#name').val()
+            jsonData.email = $('#e-mail').val()
+            jsonData.nicName = $('#nicname').val()
+            jsonData.number = $('#number').val()
+
+            console.log(jsonData)
+
+        }
+
+
+    </script>
+</body>
+
+</html>
