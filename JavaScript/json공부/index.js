@@ -28,7 +28,7 @@ if(count<=15){
     console.log('정상');
 }
 
-
+ 
 // 문제 2 . 학생 중 이씨 몇명인지 카운트
 var count = 0;
 var searchWord ='이';
