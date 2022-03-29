@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div class="form">
+
+    <input id="name" type="text" value="김민영">
+    <input id="hobby" type="text" value="방꾸미기">
+</div>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        var formsChildren = $('.form').children();
+        var jsonData = {};
+        for(var i=0; i<formsChildren.length; i++){
+            var inputId = formsChildren[i].id;
+            console.log(inputId);
+            jsonData[inputId] = $('#'+inputId).val();
+        }
+        console.log(jsonData);
+    </script>
+</body>
+</html>
