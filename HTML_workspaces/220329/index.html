@@ -20,9 +20,17 @@
         for(var i=0; i<formsChildren.length; i++){
             var inputId = formsChildren[i].id;
             console.log(inputId);
-            jsonData[inputId] = $('#'+inputId).val();
+            var inputValue = $('#'+inputId).val();
+            jsonData[inputId] = inputValue;
+            //input에 "", 길이가 20을 넘었는지 
         }
         console.log(jsonData);
+        submitServer(jsonData);
+
+        function submitServer(jsonData){
+            // 서버에 보내는 로직 구현 (with 제이쿼리)
+            // param 변수를 서버에 보내자!
+        }
     </script>
 </body>
 </html>
