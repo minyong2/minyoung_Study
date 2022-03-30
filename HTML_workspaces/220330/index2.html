@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="forms">
+        <input type="date" name="" id="reservationDate">
+        <select name="" id="menu">
+            <option value="none">메뉴선택</option>
+            <option value="kal">칼국수</option>
+            <option value="gno">뇨끼</option>
+            <option value="kim">김치볶음밥</option>
+            <option value="don">돈까스</option>
+        </select>
+        <button id="btn" type="button">음식 주문</button>
+    </div>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $('#btn').click(function(){
+        var selectedMenu = $('#menu option:selected').val();
+        // 엥 var selectedMenu = $('#menu option: selected').val(); >> option: selected 에 띄어쓰기 했다고 오류남 ; 주의
+        if(selectedMenu === 'none'){
+            alert('메뉴를 선택하시오')
+            return false;
+        }else{
+            console.log(selectedMenu)
+        }
+        var selectedDate = $('#reservationDate').val();
+
+        //selectedDate에 예약시간을 넣고 , reservationDate에 date 타입으로넣어줌 .
+
+        var now = new Date();
+        //☆★☆★☆ 내장 클래스라서 new로 불러 올 수 있음 !!!! ☆★☆★☆
+
+        console.log(now.getTime()); 
+        // now현재 날짜 (데이터타입 : date)
+        //now.getTime() 1970년부터 오늘까지 흐른 ms
+
+        var reservationDate = new Date(selectedDate); //문자 타입에서 Date 타입으로 변경
+        console.log(reservationDate.getTime()); 
+        //선택한 날짜 (데이터타입 : date)
+        //reservationDate.getTime() 1970년부터 선택한 날짜까지 흐른 ms
+        // getTime = 내 컴퓨터에 세팅된 시간
+
+        // if(reservationDate < now){
+        //     alert('오늘 이전 날짜는 예약할 수 없다능!')
+        //     return false;
+        // } 
+        //이렇게 하면 오늘날짜 예약 불가
+
+        var diffDay = (now.getTime() - reservationDate.getTime())/(1000*60*60*24)
+        console.log(diffDay);
+
+        if(diffDay >= 1){
+            // 양수면 이전날짜 음수면 이후날짜
+            alert('이전 날짜는 선택할 수 없습니다. 오늘날짜 이후로 예약이 가능합니다.')
+            return false;
+        }
+
+        
+       
+    })
+    $(function(){
+    })
+
+</script>
+</html>
