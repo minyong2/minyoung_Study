@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- div로 다 갈라놓은 input 한번에 처리하기! -->
+<div class="forms">
+    <div class="input-box">
+        <input type="text" name="" id="name">
+    </div>
+    <div class="input-box">
+        <input type="text" name="" id="email">
+    </div>
+    <div class="input-box">
+        <input type="text" name="" id="phone">
+    </div>
+    <div class="input-box">
+        <input type="text" name="" id="addr">
+    </div>
+    <div class="input-box">
+        <input type="text" name="" id="age">
+    </div>
+    <button id="button">회원가입</button>
+</div>
+    
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    
+
+    
+    var count = 0; // 전역변수
+    $('#button').on('click',function(){
+        var formsChildren = $('.forms').children();
+        // console.log(formsChildren);
+
+        var inputBoxChildren = $('.input-box').children();
+        // console.log(inputBoxChildren);
+        var jsonData = {};
+        
+        if(count >= 3){
+                // $('#button').attr("disabled","disabled");
+                alert('오늘은 회원가입을 하실 수 없습니다.')
+                $('#button').attr("disabled","disabled") //버튼 비활성화
+                return false;
+            }
+        for(var i=0; i<inputBoxChildren.length; i++){
+            var elementId = inputBoxChildren[i].id;
+            var elementValue = $('#'+elementId).val().trim();
+            if(elementValue === ''){
+                alert('빈칸 확인')
+                count++;
+                $('#'+elementId).focus();
+                return false;
+            }
+            if(elementId === 'email' && !checkEmail(elementValue)){
+            count++;
+            alert('이메일을 확인해주세요.')
+            $("#"+elementId).focus();
+            return false;
+
+        }
+        jsonData[elementId] = elementValue;
+        } //end for
+        
+
+        submitData(jsonData);
+    })
+
+    function checkEmail(email){
+        var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        return regExp.test(email);
+    }
+
+    function submitData(d){
+    console.log(d)
+        }
+
+
+
+
+</script>
+</html>
