@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table, th, td{
+        border:  1px solid;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>영수증 번호</th>
+                <th>구매 물품</th>
+                <th>수량</th>
+                <th>구매 날짜</th>
+                <th>구매자</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+            <!-- <tr>
+                <td>05-08-1597</td>
+                <td>아이폰13</td>
+                <td>1</td>
+                <td>2022-03-30</td>
+                <td>이정재</td>
+            </tr> -->
+            <!-- 눈으로 css 확인하고 주석처리 -->
+        </tbody>
+    </table>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        doResponseData();
+    })
+    //그려주다 -> rendering (IT용어)
+    //렌더링 하는 방법이 크게 2가지가 있음.
+    //1번째 방법 append(), html(), text()를 이용해서 렌더링
+    //장점 : 진입장벽 낮음 , 단점 : 유지보수 힘듦
+    //2번째 방법은 스프링 시간에!
+    //장점 : 진입장벽 높음 , 단점 : 유지보수 편리
+    function doResponseData(){
+        var json = {
+            //서버에서 응답 온 데이터라고 가정
+            no: 500,
+            product : '아이폰13',
+            cnt : 10,
+            buyAt : '2022-03-30',
+            name: '이정재'
+        };
+        
+        var html = 
+            '<tr><td>'
+            +json.no+
+            '</td><td>'
+            +json.product+
+            '</td><td>'
+            +json.cnt+
+            '</td><td>'
+            +json.buyAt+
+            '</td><td>'
+            +json.name+
+            '</td></tr>'
+
+
+        for(var i=1; i<7; i++){
+            var html = 
+            '<tr><td>'
+            +i+
+            '</td><td>'
+            +json.product+
+            '</td><td>'
+            +json.cnt+
+            '</td><td>'
+            +json.buyAt+
+            '</td><td>'
+            +json.name+
+            '</td></tr>'
+            $('#list').append(html);
+            // 어펜드로 받아줌.
+        }
+        
+    }
+</script>
+</html>
