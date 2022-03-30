@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="forms">
+        <p>모니터를 선택하세요.</p>
+        <select name="" id="select">
+            <option value="none">모니터 선택</option>
+            <option value="LG">LG</option>
+            <option value="BenQ">벤큐</option>
+            <option value="HanSung">한성</option>
+            <option value="SamSung">삼성</option>
+        </select>
+        <p>배송 희망날짜를 선택하세요.</p>
+        <input type="date" id="date">
+        <br>
+        <br>
+        <button type="button" id="button">예약 하기</button>
+    </div>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $('#button').click(function(){
+        var selectMonitor = $('#select').val();
+        if(selectMonitor === 'none'){
+            alert('모니터를 선택하세요')
+            return false;
+        }
+        var choiceDate = $('#date').val();
+        if(choiceDate === ''){
+            alert('배송 날짜를 선택하세요.')
+            return false;
+        }
+
+        var now = new Date();
+        console.log('현재시각 >> '+now)
+        var selectTime = $('#date').val();
+        var deliveryTime = new Date(selectTime);
+        console.log('배송 희망 날짜 >> '+deliveryTime);
+
+        var diffDay = (now.getTime() - deliveryTime.getTime())/(1000*60*60*24)
+        if(diffDay >= 1){
+            alert("오늘 이전 날짜는 선택할 수 없습니다.")
+            return false;
+        }
+
+        // confirm에 대한 승인 , 거부 처리 !!
+        // confirm을 변수에 넣고 if로 처리결과 출력.
+        var result = confirm(selectMonitor+"를 "+selectTime+"에 주문하시겠습니까?")
+        if(!result){
+            alert('주문이 취소되었습니다.')
+        }else{
+            alert('주문이 완료되었습니다.')
+        }
+        
+    })
+
+
+</script>
+</html>

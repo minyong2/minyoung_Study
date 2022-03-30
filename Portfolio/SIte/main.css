@@ -10,6 +10,12 @@
     height: 980px;
     background-color: rgba(153, 196, 96, 0.623);
     /* border-bottom: 2px solid rgb(255, 196, 225); */
+    /* background-image: url(벚꽃.png); */
+    background-repeat: no-repeat; 
+    /* 배경이미지X */
+    background-size: cover; /* 요소를 비율에 맞게 커버 */
+    background-position: center; /* 이미지를 요소의 정가운데로 처리 */
+    background-attachment: fixed; /* 스크롤바 움직일때 이미지가 따라다님 */
 }
 
 .Hey h1 {
@@ -53,6 +59,7 @@
     width: auto;
     margin-bottom: 5PX;
     color: rgb(100, 133, 58);
+    border-bottom: 1px solid ;
 }
 
 .item img{
@@ -73,7 +80,7 @@
     right: 5%;
     bottom: 5%;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(185, 211, 125, 0.61);
     border-radius: 10px;
 }
 

@@ -29,7 +29,7 @@
             <input id="number" type="text" placeholder="연락처를 입력해주세요...(번호만 입력하세요)" />
             <div class="question-box">
                 <span>회원가입에 동의하나요?</span>
-                <input id="checkBox" type="checkbox" />
+                <input id="checkBox" type="checkbox" onclick="check_join()" />
             </div>
             <div class="join-btn">
                 <button id="button" type="button">회원 가입</button>
@@ -109,8 +109,16 @@
             submitData();
 
 
+            // 셀프문제 . 체크박스 체크 시 회원가입에 동의하시겠습니까? 컨펌 출력 .
+            
+            
         })
-
+        
+        function check_join(){
+        var check_join = $('#checkBox').is(':checked');
+        if(check_join){
+        confirm('회원가입에 동의하시겠습니까?');
+        }}
 
 
         function checkName(userName){
