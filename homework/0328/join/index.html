@@ -58,9 +58,9 @@
 
                 
             }
-            var select = $('#emailList option:selected').text();
+            var select = $('#emailList option:selected').val();
             var selectOption = $('#emailList').val()
-            if(select == '직접입력'){
+            if(select == 'none'){
                 alert("이메일 주소를 확인해주세요.")
                 $('#emailList').focus();
             }
