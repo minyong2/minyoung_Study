@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <script>
+    var jsonData = [
+            {sal : 3000, id: 2},
+            {sal : 5000, id: 1},
+            {sal : 4400, id: 1},
+            {sal : 2300, id: 3},
+        ]
+        var sum = 0;
+        for(var i=0; i<jsonData.length; i++){
+
+            if(jsonData[i].id == 1){
+                sum += jsonData[i].sal
+            }
+
+            
+        }
+        console.log('아이디가 1인 사람의 급여 합은 : '+sum)
+    </script>
+</body>
+</html>
