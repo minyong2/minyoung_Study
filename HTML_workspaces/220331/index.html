@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table, th, td{
+        border:  1px solid;
+    }
+    </style>
+<body>
+    <div class="my-github">
+        <h1 class="name"></h1>
+        <p class="followers"></p>
+        <p class="following"></p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>visibility</th>
+                <th>create_at</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+            <!-- <tr>
+                <td>97263974</td>
+                <td>ᴍɪɴᴏᴏɴɢ</td>
+                <td>public</td>
+                <td>2022-01-07T00:18:19Z</td>
+            </tr> -->
+        </tbody>
+    </table>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        // 전송!~ (동기 전송, 비동기 전송)
+        
+        // $.ajax({
+        //     url:'https://api.github.com/users/minyong2',
+        //     type : 'GET', //데이터 조회(select)
+        //     dataType : 'json', //서버에서 오는 데이터 타입 정의
+        //     headers : {Authorization : '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'},
+        //     success : (data)=>{
+        //         //서버 요청에 성공하면!
+        //         // console.log(data);
+        //         // console.log(data.followers);
+        //         // console.log(data.following);
+
+        //         $('.followers').append(data.followers);
+        //         $('.following').append(data.following);
+        //         $('.name').append(data.name)
+
+                
+        //     },
+        //     error : function(requset, status, error){
+        //         //서버 요청에 실패하면!
+        //         console.log(request);
+        //         if(requset.status == 404){
+        //             alert('없는 주소입니다.')
+        //         }
+        //     }
+        // });
+        // var len = json.length;
+        $.ajax({
+            url:'https://api.github.com/users/minyong2/repos',
+            type : 'GET',
+            dataType : 'json',
+            // headers : {Authorization : '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'},
+            success : (data) =>{
+                console.log(data);
+
+                
+                var len = data.length;
+                for(var i=0; i<len; i++){
+                    // console.log(data[0].visibility)
+                    var visibility = data[i].visibility
+                    var name = data[i].name
+                    var id = data[i].id
+                    var create_at = data[i].created_at
+
+                    var html = 
+                        '<tr><td>'
+                        + id +
+                        '</td><td>'
+                        + name +
+                        '</td><td>'
+                        + visibility +
+                        '</td><td>'
+                        + create_at +
+                        '</td></tr>'
+                    $('#list').append(html);
+                }
+}
+        })
+
+    </script>
+</body>
+</html>
