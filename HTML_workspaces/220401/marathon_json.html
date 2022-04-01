@@ -98,54 +98,38 @@
       var start = new Date(start);
       //시작시간 선언
 
+      // var start =  '2022-04-01 13:00:00';
+      // var start = new Date(start);
 
-      
-      var sum = 0;
-
-
+      //↓
+      var start = new Date('2022-04-01 13:00:00').getTime();
+      //시작시간 선언
       var min = 0;
+      var cnt = 0;
       for(var i=0; i<len; i++){
-
-        var finish = new Date(marathonList[i].records).getTime();
-
-        min = finish[0]
         if(marathonList[i].records != 'null'){
-          console.log(finish)
-          if(finish < min){
-            min = finish
+          var finish = new Date(marathonList[i].records).getTime();
+          var diffTime = start - finish;
+
+          if(cnt === 0){
+            min = diffTime;
+          } ++cnt;
+          if(min > diffTime){
+            min = finish;
+            temp = i;
           }
           
         }
         
         
       }
-      console.log("최소시간 = "+min)
+      console.log(marathonList[temp])
+      
 
       // 5. 완주한 사람들의 평균 기록을 구하고 출력하시오.
       //   (단, 기록이 null인 사람은 제외)
 
       
-      var sum = 0;
-      // console.log("평균은 " + avg)
-      for (var i = 0; i < len; i++) {
-
-          var date = new Date(marathonList[i].records).getTime()/(1000*60);
-          sum += date
-
-          console.log("시간 총 합"+sum)
-
-        }
-
-
-      //완주시간 선언
-      start_time = start.getTime()
-
-
-      //시작 시간 ms 화
-      console.log("시작 시각 (ms)>>  " + start_time)
-
-    
-
       /*
         
 
