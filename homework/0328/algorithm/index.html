@@ -17,10 +17,13 @@ let len = array.length;
 
 
 function bubble(array){
-    for(let i=0; i<len; i++){
-
-        for(let j=0; j<len-1-i; j++){
-
+    for(let i=0; i<len; i++){ //outer - for
+        for(let j=0; j<(len-1)-i; j++){ //inner - for
+//outer for문이 1번 회전할 때 마다 , inner for문은 1씩 차감되어 돌아야 함.
+// 5 -1 -0 = 4
+// 5 -1 -1 = 3
+// 5 -1 -2 = 2
+// 5 -1 -3 = 1
             if(array[j]>array[i]){
 
                 var alter = array[j];
@@ -31,9 +34,25 @@ function bubble(array){
         }
     }
 }
+
+for(let i=len; i>0; i--){
+    console.log(i)
+    for(let j=0; j<(i-1); j++){
+        //i가 처음에 5라서 -1을 해줌 . 왜냐? 처음에 4번 돌아야 하니까.
+        if(array[j]>array[j+1]){
+            let temp = array[j]; //큰 수
+            array[j] = array[j+1];
+            array[j+1] = temp;
+            ++count ;
+            isSwap = true;
+        }
+
+    }
+    if(!isSwap) break;
+}
     
 bubble(array);
-console.log(array);
-console.log(count);
+//console.log(array);
+//console.log(count);
 </script>
 </html>
