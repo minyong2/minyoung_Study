@@ -3,7 +3,7 @@ for(int i=0; i<list.size(); i++){
 			if(list.get(i).sal >= 1300){
 				System.out.println("============2번============");
 				System.out.println("이름 ==> "+list.get(i).ename);
-				System.out.println("직업 ==> "+list.get(i).job);
+				System.out.println("직업 ==> "+list.get(i).job);  
 			}	
 		}
 		//3. 직업이 SALESMAN인 사원 중 급여가 1400달러 이상 받는 사원의 번호,이름 조회
