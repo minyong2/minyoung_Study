@@ -36,7 +36,7 @@
                         <input type="password" id="pswd2" class="int" maxlength="20">
                     </span>
                     <div class="btn-area">
-                        <button type="button" id="btnJoin">가입하기</button>
+                        <button type="button" id="btnJoin" onclick="join()">가입하기</button>
                     </div>
                 </div>
             </div>
@@ -48,6 +48,50 @@
       crossorigin="anonymous"
     ></script>
     <script>
+        function join(){
+            var id = $('#id').val().trim();
+            var pswd1 = $('#pswd1').val().trim();
+            var pswd2 = $('#pswd2').val().trim();
+            if(id == ''){
+                alert("필수 입력란입니다. 입력해주세요.")
+                $('#id').focus();
+                return false;
+            }else if(!checkId(id)){
+                alert("아이디는 영문 소문자, 숫자만 가능합니다.")
+                return false;
+
+            }
+            
+
+
+            if(pswd1 == ''){
+                alert("필수 입력란입니다. 입력해주세요.")
+                $('#pswd1').focus();
+                return false;
+            }
+            if(pswd2 == ''){
+                alert("필수 입력란입니다. 입력해주세요.")
+                $('#psed2').focus();
+                return false;
+            }
+            if(pswd1 != pswd2){
+                alert("비밀번호를 다시 확인하십시오")
+                $('#psed2').focus();
+                return false;
+            }
+
+            var isJoin = confirm("회원가입을 하시겠습니까?")
+            if(isJoin){
+                alert("회원가입이 완료되었습니다.")
+            }
+
+            
+        }
+
+        function checkId(id){
+            var regex1 = /[a-z0-9]/;//소문자,숫자만 가능하게
+            return regex1.test(id);
+        }
         /* 
           ** 문제를 풀 때 규칙을 먼저 찾아야 합니다. **
            1. 가입하기 버튼을 눌렀을 때 모든 input박스에 값이 있어야 함.
