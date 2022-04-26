@@ -1,9 +1,4 @@
--- 4번 아직 안풀었어요 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
--- 4번 아직 안풀었어요 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
--- 4번 아직 안풀었어요 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
--- 4번 아직 안풀었어요 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
--- 4번 아직 안풀었어요 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
--- 4번 아직 안풀었어요 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
 -- 차량 수 조회
 select count(*) as 차량의수 from car_information
@@ -27,7 +22,20 @@ right outer join devices d
 on 
 where date_format(l.create_at, '%Y-%m-%d') >= '2022-04-11' 
 
+--
 
+select 
+	d.device_uuid,
+	d.firmware_ver
+from devices as d
+inner join car_information as ci
+on d.device_uuid = ci.device_uuid
+inner join car_event_log as cel
+on ci.car_number = cel.car_number
+where 
+	date_format(cel.create_at, '%Y-%m-%d')  >= '2022-04-11'
+	and cel.event_type = '3'
+group by d.device_uuid
 
 -- 2022-04-11 ~ 2022-04-13 일별 이벤트 카운트 조회.
 select count(l.log_srl) from car_event_log l
