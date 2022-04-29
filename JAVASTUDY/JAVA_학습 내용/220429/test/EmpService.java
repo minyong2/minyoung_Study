@@ -11,7 +11,8 @@ public class EmpService implements EmpServiceImpl{
 			int sal = list.get(i).getSal();
 			sal = sal+EmpCode.SPECIAL_BONUS;
 			list.get(i).setSal(sal);
-			System.out.println(list.get(i).getSal());
+			
+			System.out.println(list.get(i).getEname()+" "+list.get(i).getEmpno()+" "+list.get(i).getSal());
 		}
 		return list;
 	}

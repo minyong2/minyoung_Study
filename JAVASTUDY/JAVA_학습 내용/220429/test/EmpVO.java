@@ -38,5 +38,10 @@ public class EmpVO{
 	public void setEname(String ename) {
 		this.ename = ename;
 	}
+
+	public String getDeptNO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
