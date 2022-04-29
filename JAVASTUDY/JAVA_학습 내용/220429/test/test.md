@@ -73,7 +73,7 @@
         public static int count;
         public int temp;
 
-    }
+    } 
     class B{
 
         main(){
