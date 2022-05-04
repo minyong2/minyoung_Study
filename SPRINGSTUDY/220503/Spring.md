@@ -39,7 +39,7 @@
 
 대신 MainService 클래스에 @Service 가 있어야함.
 ```
-
+### `spring 3대장`
 - IoC(Inversion of Control : 제어의 역전)
 ```
 객체의 생성부터 소멸까지 Spring에서 관리함
