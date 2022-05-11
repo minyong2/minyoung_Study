@@ -4,7 +4,7 @@
 @PatchMapping("/emp/empno/{empno}")
 	public int callEmpSalUpdate(@PathVariable("empno") int empno) {
 		
-		return 0;
+		return empService.getEmpUpdateCommSal(empno);
 		
 	}
 
