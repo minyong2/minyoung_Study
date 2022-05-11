@@ -52,3 +52,7 @@ public EmpVO selectDeptNo();//v
 	<!-- 출력문이 단일행이라 EmpVO . 복수행?이었으면 List<EmpVO> -->
 	</select>
 ```
+```
+끔찍한 혼종을 쓰는 이유
+url에서 어떤것에 관련된 주소인지 미리 알 수 있어서.
+```
