@@ -30,3 +30,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		return studentsMapper.insertStudents(vo);
 	}
 ```
+
+### @CrossOrigin 어노테이션을 붙여주면 기본적으로 '모든 도메인, 모든 요청방식' 에 대해 허용 한다는 뜻이다.
