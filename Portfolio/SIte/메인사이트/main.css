@@ -304,8 +304,12 @@ button:hover:before,button:hover:after{
     box-shadow: 3px 3px 5px rgb(179, 179, 179);
 }
 
-archiving{
+.archiving{
     /* margin-bottom: 100px; */
+    /* border-bottom: 1px solid; */
+    margin: 100px 0;
+    padding: 1%;
+    background-color: rgba(238, 238, 238, 0.514);
 }
 .arch_block{
     display: flex;
@@ -321,6 +325,7 @@ archiving{
     border-radius: 30px;
     position: relative;
     padding: 30px;
+    
 }
 .github img{
     width: 500px;
