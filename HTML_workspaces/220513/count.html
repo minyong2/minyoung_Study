@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html> 
+ 
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>      </title> 
+ </head> 
+ 
+ <body> 
+  <h1 id="time">0</h1> 
+ 
+  <script> 
+   //            （    ,     ） 
+   function NumAutoPlusAnimation(targetEle, options) { 
+ 
+    /*            ，               */ 
+    //            html   data-xxxx     
+    options = options || {}; 
+ 
+    var $this = document.getElementById(targetEle), 
+     time = options.time || $this.data('time'), //   --      
+     finalNum = options.num || $this.data('value'), //         
+     regulator = options.regulator || 100, //   ，  regulator               
+ 
+     step = finalNum / (time / regulator),/* 30ms     --*/ 
+     count = 0, //    
+     initial = 0; 
+ 
+    var timer = setInterval(function() { 
+ 
+     count = count + step; 
+ 
+     if(count >= finalNum) { 
+      clearInterval(timer); 
+      count = finalNum; 
+     } 
+     //t             
+     //    text  ，  DOM   
+     var t = Math.floor(count); 
+     if(t == initial) return; 
+ 
+     initial = t; 
+ 
+     $this.innerHTML = initial; 
+    }, 30); 
+   } 
+ 
+   NumAutoPlusAnimation("time", { 
+    time: 1500, 
+    num: 12000, 
+    regulator: 50 
+   }) 
+  </script> 
+ 
+ </body> 
+ 
+</html> 
