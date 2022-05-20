@@ -19,7 +19,7 @@
           <input id="userPassword" type="password" required />
           <label>비밀번호</label>
         </div>
-        <input class="login-btn" type="butten" value="로그인" />
+        <input class="login-btn" type="butten" value="로그인" onclick="join()"/>
         <div class="signup-link">회원이 아닌가요? <a href="join.html">회원가입</a></div>
       </div>
     </div>
@@ -29,6 +29,37 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      function join(){
+        var userId = $('#userId').val();
+        var userPassword = $('#userPassword').val();
+
+
+        if(userId == ''||userPassword==''){
+          alert('회원 정보를 정확히 입력해주십시오.');
+          return false;
+        }
+
+        var jsonData = {
+          studentsName : userId,
+          studentsPassword : userPassword
+
+        }
+
+        $.ajax({
+          url : 'http://localhost:8080/api/v1/login',
+          type : 'POST',
+          contentType : 'application/json',
+          data : JSON.stringify(jsonData),
+          success : function(response){
+            if(response){
+              location.href = 'board/index.html'
+            }else{
+              alert('아이디 혹은 비밀번호가 틀렸습니다.')
+            }
+            
+          }
+        })
+      }
    </script>
   </body>
 </html>
