@@ -137,39 +137,8 @@
                             <th>조회 수</th>
                          </tr>
                      </thead>
-                     <tbody>
-                         <tr>
-                             <td>1</td>
-                             <td>현상원</td>
-                             <td>점심시간이 너무 짧아요!</td>
-                             <td>2022-05-19</td>
-                             <td>2022-05-18</td>
-                             <td><span class="high">8320</span></td>
-                         </tr>
-                         <tr>
-                            <td>2</td>
-                            <td>현상원</td>
-                            <td>학원에 커피기계가 없어요!</td>
-                            <td>2022-05-19</td>
-                            <td>2022-05-18</td>
-                            <td><span class="middle">1200</span></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>현상원</td>
-                            <td>너무 졸려요...</td>
-                            <td>2022-05-19</td>
-                            <td>2022-05-18</td>
-                            <td><span class="row">5</span></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>현상원</td>
-                            <td>안녕하세요!</td>
-                            <td>2022-05-19</td>
-                            <td>2022-05-18</td>
-                            <td><span class="row">22</span></td>
-                        </tr>
+                     <tbody id="data">
+                        <!-- 더미데이터가 있던 자리 -->
                      </tbody>
                  </table>
              </div>
@@ -179,9 +148,9 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
     ></script>
 <script>
     $('.btn').click(function(){
@@ -190,11 +159,7 @@
     $('.btn-cancel').click(function(){
         $('.write-popup').css('display', 'none');
     });
-    $('#contentSubmit').click(function(){
-        if(confirm('게시글을 작성하시겠습니까?')){
-            $('.write-popup').css('display', 'none');
-        }
-    });
+
     let list = document.querySelectorAll('.navigation li');
     function activeLink(){
         list.forEach((item) => {item.classList.remove('hovered')});
@@ -202,4 +167,96 @@
     }
     list.forEach((item) => {item.addEventListener('mouseover',activeLink)});
 </script>
+<script>
+    // 글 작성 함수
+    $('#contentSubmit').click(function(){
+
+        if(confirm('게시글을 작성하시겠습니까?')){
+        var title = $('#title').val();
+        var content = $('#content').val();
+        var studentsId = 9;
+
+        if(title == '' || content == ''){
+            alert('제목 혹은 내용을 입력해주십시오');
+            $('#title').focus();
+
+            return false;
+        }
+
+        var jsonData = {
+        studentsId : studentsId,
+        title : title,
+        content : content
+        }
+
+        $.ajax({
+            url : 'http://localhost:8080/api/v1/board',
+            type : 'POST',
+            contentType : 'application/json',
+            dataType : 'json',
+            data : JSON.stringify(jsonData),
+            success : function(response){
+                if(response>0){
+                    // alert('글 작성 완료');
+                    //작성 화면 감추기
+                    $('.write-popup').css('display', 'none');
+                    //글 작성창에 이전에 작성했던 내용 지우기.
+                    $('#title').val('');
+                    $('#content').val('');
+
+                    $('#data').children().remove();
+                    getBoardList();
+                }
+            // console.log("글 올라감");
+        }
+    })
+    };
+        })
+       
+
+    getBoardList();
+    function getBoardList(){
+        $.ajax({
+        url : 'http://localhost:8080/api/v1/board',
+        type : 'GET',
+        dataType : 'json',
+        success : function(response){ //(파라미터 변수 이름이라 임의로 지정가능)
+        console.log(response); // 전체 사원 찍어보기    
+        for (var i=0; i<response.length; i++){
+            if(response[i].updateAt == null){
+                response[i].updateAt == "-";
+            }
+        }
+        let html = "";
+        
+        if(response.length>0){
+            for(var i=0; i<response.length; i++){
+                html +=
+                '<tr><td>' +response[i].boardId+
+                    '</td><td>'
+                    +response[i].studentsName+
+                    '</td><td>'
+                    +response[i].title+
+                    '</td><td>'
+                    +response[i].updateAt+
+                    '</td><td>'
+                    +response[i].createAt+
+                    '</td><td>'
+                    +'<span class="row">0</span>'+
+                    '</td></tr>'
+        }}else{
+            //게시글 없음 로직 구현
+            html += '<tr><td colspan = 6 style="text-align : center ">게시글이 없습니다.</td></tr>'
+        
+        }
+
+        $('#data').append(html); //tbody에 json데이터 렌더링
+
+        },
+    });
+
+    }
+
+</script>
+
 </html>
