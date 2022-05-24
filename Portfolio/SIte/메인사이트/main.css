@@ -11,7 +11,7 @@
     height: 1100px;
     background-color: rgba(153, 196, 96, 0.623);
     /* border-bottom: 2px solid rgb(255, 196, 225); */
-    background-image: url('벛꽃메인사진.png');
+    background-image: url('img/벛꽃메인사진.png');
     background-repeat: no-repeat; 
     /* 배경이미지X */
     background-size: cover; /* 요소를 비율에 맞게 커버 */
