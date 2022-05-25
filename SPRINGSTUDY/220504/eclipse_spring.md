@@ -12,7 +12,7 @@ File -> import -> Gradle or Maven (회사에서 사용하는 것)
 깃허브 풀, 클론 받으면 import 해줘야함.
 ```
 ======= 
-```
+```  
 rm: cannot remove '/etc/post-install/01-devices.post': Permission denied
 rm: cannot remove '/etc/post-install/03-mtab.post': Permission denied
 rm: cannot remove '/etc/post-install/06-windows-files.post': Permission denied

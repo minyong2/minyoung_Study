@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="write-popup">
+            <div class="editor">
+                <div class="input-box">
+                    <label for="studentsName">작성자 : </label>
+                    <input id="studentsName" type="text" value="현상원" readonly>
+                </div>
+                <div class="input-box">
+                    <label for="title">제목 : </label>
+                    <input id="title" type="text" placeholder="제목을 입력하세요...">
+                </div>
+                <div class="input-box">
+                    <textarea id="content" rows="10" cols="65" placeholder="내용을 간단히 적어주세요..."></textarea>
+                </div>
+                <div class="btn-area">
+                    <a href="#" class="btn-cancel">취소</a>
+                    <a id="contentSubmit" href="#" class="btn-success">등록</a>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="logo-apple"></ion-icon></span>
+                        <span class="title">DW Board</span>                
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Dashboard</span>                
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                        <span class="title">Students</span>                
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                        <span class="title">Password</span>                
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Sign Out</span>                
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- main -->
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <!-- toggle은 나중에 만들기 -->
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <!-- search -->
+            <div class="search">
+                <label>
+                    <input type="text" placeholder="작성자를 검색하세요...">
+                </label>
+            </div>
+            <div>
+                <a href="#" class="logout">로그아웃</a>
+            </div>
+        </div>
+         <!-- cards -->
+         <div class="cardBox">
+             <div class="card">
+                 <div>
+                    <div class="numbers">1,400</div>
+                    <div class="cardName">학생 수</div>
+                 </div>
+                 <div class="iconBx">
+                    <ion-icon name="school-outline"></ion-icon>
+                 </div>
+             </div>
+             <div class="card">
+                <div>
+                   <div class="numbers">500</div>
+                   <div class="cardName">게시글 수</div>
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="book-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                   <div class="numbers">300</div>
+                   <div class="cardName">작성자 수</div>
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="code-slash-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                   <div class="numbers">2,800</div>
+                   <div class="cardName">총 조회 수</div>
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </div>
+            </div>
+         </div>
+         <!-- table -->
+         <div class="details">
+             <div class="recentOrders">
+                 <div class="cardHeader">
+                     <h2>Board List</h2>
+                     <a href="#" class="btn">글 작성</a>
+                 </div>
+                 <table>
+                     <thead>
+                         <tr>
+                            <th>게시판 번호</th>
+                            <th>작성자</th>
+                            <th>제목</th>
+                            <th>수정 날짜</th>
+                            <th>작성 날짜</th>
+                            <th>조회 수</th>
+                         </tr>
+                     </thead>
+                     <tbody id="data">
+                        <!-- 더미데이터가 있던 자리 -->
+                     </tbody>
+                 </table>
+             </div>
+         </div>
+    </div>
+</body>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+    ></script>
+<script>
+    $('.btn').click(function(){
+        $('.write-popup').css('display', 'block');
+    });
+    $('.btn-cancel').click(function(){
+        $('.write-popup').css('display', 'none');
+    });
+
+    let list = document.querySelectorAll('.navigation li');
+    function activeLink(){
+        list.forEach((item) => {item.classList.remove('hovered')});
+        this.classList.add('hovered');
+    }
+    list.forEach((item) => {item.addEventListener('mouseover',activeLink)});
+</script>
+<script>
+    // 글 작성 함수
+    $('#contentSubmit').click(function(){
+
+        if(confirm('게시글을 작성하시겠습니까?')){
+        var title = $('#title').val();
+        var content = $('#content').val();
+        var studentsId = 9;
+
+        if(title == '' || content == ''){
+            alert('제목 혹은 내용을 입력해주십시오');
+            $('#title').focus();
+
+            return false;
+        }
+
+        var jsonData = {
+        studentsId : studentsId,
+        title : title,
+        content : content
+        }
+
+        $.ajax({
+            url : 'http://localhost:8080/api/v1/board',
+            type : 'POST',
+            contentType : 'application/json',
+            dataType : 'json',
+            data : JSON.stringify(jsonData),
+            success : function(response){
+                if(response>0){
+                    // alert('글 작성 완료');
+                    //작성 화면 감추기
+                    $('.write-popup').css('display', 'none');
+                    //글 작성창에 이전에 작성했던 내용 지우기.
+                    $('#title').val('');
+                    $('#content').val('');
+
+                    $('#data').children().remove();
+                    getBoardList();
+                }
+            // console.log("글 올라감");
+        }
+    })
+    };
+        })
+       
+
+    getBoardList();
+    function getBoardList(){
+        $.ajax({
+        url : 'http://localhost:8080/api/v1/board',
+        type : 'GET',
+        dataType : 'json',
+        success : function(response){ //(파라미터 변수 이름이라 임의로 지정가능)
+        console.log(response); // 전체 사원 찍어보기    
+        for (var i=0; i<response.length; i++){
+            if(response[i].updateAt == null){
+                response[i].updateAt == "-";
+            }
+        }
+        let html = "";
+        
+        if(response.length>0){
+            for(var i=0; i<response.length; i++){
+                html +=
+                '<tr><td>' +response[i].boardId+
+                    '</td><td>'
+                    +response[i].studentsName+
+                    '</td><td>'
+                    +response[i].title+
+                    '</td><td>'
+                    +response[i].updateAt+
+                    '</td><td>'
+                    +response[i].createAt+
+                    '</td><td>'
+                    +'<span class="row">0</span>'+
+                    '</td></tr>'
+        }}else{
+            //게시글 없음 로직 구현
+            html += '<tr><td colspan = 6 style="text-align : center ">게시글이 없습니다.</td></tr>'
+        
+        }
+
+        $('#data').append(html); //tbody에 json데이터 렌더링
+
+        },
+    });
+
+    }
+
+</script>
+
+</html>
