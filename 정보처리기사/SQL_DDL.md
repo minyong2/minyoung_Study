@@ -1,4 +1,4 @@
-## Part 8. 01 SQL 정의어 DDL
+  ## Part 8. 01 SQL 정의어 DDL
     CREATE,ALTER,DROP
 
 ### CREATE
