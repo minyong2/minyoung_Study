@@ -110,7 +110,7 @@
          <div class="cardBox">
              <div class="card">
                  <div>
-                    <div class="numbers">1,400</div>
+                    <div id="studetnsCnt" class="numbers">1,400</div>
                     <div class="cardName">학생 수</div>
                  </div>
                  <div class="iconBx">
@@ -119,7 +119,7 @@
              </div>
              <div class="card">
                 <div>
-                   <div class="numbers">500</div>
+                   <div id="contentsCnt" class="numbers">500</div>
                    <div class="cardName">게시글 수</div>
                 </div>
                 <div class="iconBx">
@@ -128,7 +128,7 @@
             </div>
             <div class="card">
                 <div>
-                   <div class="numbers">300</div>
+                   <div id="writerCnt" class="numbers">300</div>
                    <div class="cardName">작성자 수</div>
                 </div>
                 <div class="iconBx">
@@ -137,7 +137,7 @@
             </div>
             <div class="card">
                 <div>
-                   <div class="numbers">2,800</div>
+                   <div id="viewCnt" class="numbers">2,800</div>
                    <div class="cardName">총 조회 수</div>
                 </div>
                 <div class="iconBx">
@@ -218,6 +218,26 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+<script>
+    //게시판 통계함수 호출
+    getBoardStatistics();
+    function getBoardStatistics(){
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/board/statistics',
+            type : 'GET',
+            dataType : 'json',
+            success : function(response){
+                // text() or html() input을 제외한 태그를 컨트롤할 때 사용
+                //val()은 input 컨트롤할때 사용
+                $('#contentsCnt').text(response.contentsCnt);
+                $('#viewCnt').text(response.viewCnt);
+                $('#writerCnt').text(response.writerCnt);
+                $('#studetnsCnt').text(response.studetnsCnt);
+            }
+        });
+
+    };
+</script>
 <script>
     $('.btn').click(function(){
         $('.write-popup').css('display', 'block');
