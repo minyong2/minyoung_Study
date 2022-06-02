@@ -1,8 +1,53 @@
-### interceptor
+### `interceptor`
 ```
 사용자가 요청(URL)을 서버에 보낼 때 마다
 중간에 요청을 가로챌 수 있음
+
+사용자 ===== 요청 ===== > 서버
+              ↑  (여기서 인터셉트!)
+              :컨트롤러마다 ip메소드를 적어주지 않아도 가능!\
 ```
+```java
+com.dw.board.interceptor / interceptor.java
+* ip 메소드
+
+
+@Component
+public class Interceptor implements HandlerInterceptor{
+
+	//preHandle : 컨트롤러에 도착하기 전에 요청을 가로채는 함수
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		
+		String url = request.getRequestURI();
+		String ip = request.getHeader("X-Forwarded-For");
+		if(ip == null) ip = request.getRemoteAddr();
+		System.out.println("접속한 아이피 ==> "+ip);
+		System.out.println("요청 받은 URL ==>" + url);
+		return true;
+	}
+```
+이 아이들은 무슨 역할?
+```java
+com.dw.board.interceptor / interceptor.java
+
+
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+			ModelAndView modelAndView) throws Exception {
+	}
+
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
+	}
+	
+```
+
+---
+
+
 ```
 카카오맵 api 
 카카오 개발자에 들어가서 key를 발급받는다.
@@ -32,4 +77,7 @@
         // 마커가 지도 위에 표시되도록 설정합니다
         marker.setMap(map);
     }
+```
+```
+
 ```
