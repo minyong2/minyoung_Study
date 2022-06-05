@@ -348,7 +348,7 @@ body{
 }
 .logs-popup{
     z-index: 10;
-    display: block;
+    display: none;
     position: absolute;
     left: 0; 
     right: 0; 

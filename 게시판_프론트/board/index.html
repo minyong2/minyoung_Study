@@ -193,7 +193,7 @@
                         </tr> -->
                      </tbody>
                  </table>
-                 <div class="pagination">
+                 <div class="pagination">              
                     <!-- <a href="#">Previous</a>
                     <a href="#">1</a>
                     <a href="#">2</a>
@@ -242,7 +242,6 @@
             type : 'GET',
             dataType: 'json',
             success: function (response) {
-                console.log(response);
                 //html append 작성
                 var html = '';
                 var len = response.list.length;
