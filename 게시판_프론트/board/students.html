@@ -101,7 +101,7 @@
                         </tr>
                      </thead>
                      <tbody id="boardData">
-                         <tr>
+                         <!-- <tr>
                              <td>hyunsangwon</td>
                              <td>현상원</td>
                              <td>2022-05-19</td>
@@ -115,7 +115,7 @@
                             <td>hyunsangwon</td>
                             <td>현상원</td>
                             <td>2022-05-19</td>
-                        </tr>
+                        </tr> -->
                      </tbody>
                  </table>
                  <div class="pagination">
@@ -147,25 +147,61 @@
     list.forEach((item) => {item.addEventListener('mouseover',activeLink)});
 </script>
 <script>
-    getStudentsList(0,10)
+    function getStudents(studentsId){//클릭한 게시물 확인하는 함수 
+        //boardId html에 hidden 하기
+        //1. 화면 none -> block
+        $('.update-popup').css('display', 'block');
+        //AJAX 작성
+        //2. AJAX를 이용해서 서버와 연결
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/student/detail/'+studentsId,
+            type : 'GET',
+            dataType: 'json',
+            success: function (response) {
+                //3. input에 데이터 set 해주기!  
+                $('#studentsId').val(response.studentsId);
+                $('#studentsName').val(response.studentsName);
+                $('#studentsPassword').val(response.studentsPassword);
+                // $('#boardIdHidden').val(boardId);
+                // setBoardViews(boardId); //조회 수 함수
+            }
+        });
+    }//end
+</script>
+<script>
+    //학생 리스트 호출
+    getStudentsList(1,10)
 function getStudentsList(pageNum, pageSize){
     $.ajax({
-        url : 'url이 들어올 자리',
+        url : 'http://localhost:8080/api/v1/student?pageNum='+pageNum+'&pageSize='+pageSize,
         type : 'GET',
         dataType : 'json',
         success: function(response){
-            var html = '';
+            var html = "";
             var len = response.list.length;
             if(len > 0){
-                html += '<tr onclick=getBoard('+response.list[i].studentsId+')> <td>'+response.list[i].studentsName+'</td><td>'+response.list[i].가입날짜+'</td></tr>';
+                for(var i=0; i<len; i++){
+                    if(len > 0){
+                        
+                        html += 
+                        '<tr onclick=getStudents('+response.list[i].studentsId+')> <td>'
+                            +response.list[i].studentsId+
+                            '</td><td>'
+                            +response.list[i].studentsName+
+                            '</td><td>'
+                            +response.list[i].createAt+
+                            '</td></tr>';
+                    }
+                }
                 //페이징 화면 구현
+                console.log(response.list)
                 var paginationHtml = '';
                         if(response.hasPreviousPage){ //이전 페이지가 true 라면
                             paginationHtml += '<a onclick="getStudentsList('+(response.pageNum-1)+','+pageSize+')" href="#">Previous</a>';
                         }
                         for(var i=0; i<response.navigatepageNums.length; i++){ //페이지 번호 길이 만큼 for문 실행
                             paginationHtml += '<a id="pageNum'+response.navigatepageNums[i]+
-                                              '" onclick="getStudentsList('+response.navigatepageNums[i]+','+pageSize+')">'+response.navigatepageNums[i]+'</a>';
+                                                '" onclick="getStudentsList('+response.navigatepageNums[i]+','+pageSize+')">'+response.navigatepageNums[i]+'</a>';
                         }
                         if(response.hasNextPage){ //다음 페이지가 true 라면
                             paginationHtml += '<a onclick="getStudentsList('+(response.pageNum+1)+','+pageSize+')" href="#">Next</a>';
@@ -180,10 +216,61 @@ function getStudentsList(pageNum, pageSize){
             else{
                 html += '<tr><td colspan=6 style="text-align: center;"> 조회 가능한 학생이 없습니다.</td></tr>';
             }
+            $('#boardData').children().remove();  // 성형작업1
+            $('#boardData').append(html); // tbody에 json데이터 렌더링
 
         }
     })
 }
+</script>
+<script>
+    // 특정 학생 수정
+    $('#contentUpdate').click(function(){
+        //1. 게시판 번호 확인
+        var boardId =  $('#boardIdHidden').val(); //hidden에 숨겨둔 boardId 가져오기.
+        //2. JSON 생성
+        var studentsId = $('#studentsId').val();
+        var studentsName = $('#studentsName').val();
+        var studentsPassword = $('#studentsPassword').val();
+        var jsonData = {
+            studentsId : studentsId,
+            studentsName : studentsName,
+            studentsPassword : studentsPassword
+        };
+        //3. AJAX를 이용해서 업데이트!
+        $.ajax({
+                url : 'http://localhost:8080/api/v1/student/id/'+studentsId,
+                type : 'PATCH', //HTTP 메소드는 PATCH
+                contentType: 'application/json', //서버에 json 타입으로 보낼 예정(요청)
+                dataType: 'json', //서버 결과를 json으로 응답받겠다.
+                data: JSON.stringify(jsonData),
+                success : function(response){
+                    if(response > 0){
+                        alert('수정 완료');
+                        $('.update-popup').css('display', 'none'); //게시물 상세 화면 감추기
+                    }
+                }
+            });//ajax end
+    });//end
 
+
+
+    // 특정 학생 삭제
+    $('#contentDelete').click(function(){
+        // var boardId =  $('#boardIdHidden').val(); //hidden에 숨겨둔 boardId 가져오기.
+        $.ajax({
+            url: 'http://localhost:8080/api/v1/student/id/'+studentsId,
+            type : 'DELETE',
+            dataType: 'json',
+            success: function (response) {
+                if(response > 0){
+                    alert('삭제 완료');
+                    $('#boardData').children().remove();
+                    getStudentsList(1,10)
+                    $('.update-popup').css('display', 'none'); //게시물 상세 화면 감추기
+                }
+            }
+        });
+    });
 </script>
 </html>
