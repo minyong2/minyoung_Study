@@ -79,7 +79,7 @@
             <!-- search -->
             <div class="search">
                 <label>
-                    <input id="searchBar" type="text" placeholder="학생이름을 검색하세요..." >
+                    <input id="searchStudentBar" type="text" placeholder="학생이름을 검색하세요..." >
                 </label>
             </div>
             <div>
@@ -91,6 +91,7 @@
              <div class="recentOrders">
                  <div class="cardHeader">
                      <h2>학생 명단</h2>
+                     <a href="#" class="btn">학생 추가</a>
                  </div>
                  <table>
                      <thead>
@@ -169,8 +170,9 @@
     }//end
 </script>
 <script>
-    //학생 리스트 호출
-    getStudentsList(1,10)
+
+//학생 리스트 호출
+getStudentsList(1,10)
 function getStudentsList(pageNum, pageSize){
     $.ajax({
         url : 'http://localhost:8080/api/v1/student?pageNum='+pageNum+'&pageSize='+pageSize,
@@ -257,20 +259,61 @@ function getStudentsList(pageNum, pageSize){
 
     // 특정 학생 삭제
     $('#contentDelete').click(function(){
-        // var boardId =  $('#boardIdHidden').val(); //hidden에 숨겨둔 boardId 가져오기.
+
+        //게시판 번호 확인
+        var studentsIdHidden =  $('#boardIdHidden').val(); //hidden에 숨겨둔 boardId 가져오기.
         $.ajax({
-            url: 'http://localhost:8080/api/v1/student/id/'+studentsId,
+            url: 'http://localhost:8080/api/v1/student/id/'+studentsIdHidden,
             type : 'DELETE',
             dataType: 'json',
             success: function (response) {
                 if(response > 0){
                     alert('삭제 완료');
-                    $('#boardData').children().remove();
-                    getStudentsList(1,10)
                     $('.update-popup').css('display', 'none'); //게시물 상세 화면 감추기
                 }
             }
         });
+    });
+</script>
+
+<script>
+    $('#searchStudentBar').keyup(function(key){
+        //엔터를 누를때 hello world를 출력하고 싶음.
+        //13은 엔터를 의미
+        if(key.keyCode == 13){
+            //1. input 값을 가져옴.
+            var writer = $('#searchStudentBar').val();//input에 작성한 작성자를 가져옴
+            //2. AJAX 호출
+            $.ajax({
+                url: 'http://localhost:8080/api/v1/student/search?writer='+writer,
+                type : 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    var html = '';
+                    var len = response.length;
+                    console.log('검색 결과');
+                    console.log(response);
+                    if(len > 0){
+                        for(var i=0; i<len; i++){          
+                            if(len > 0){
+                                html += '<tr onclick=getStudents('+response[i].studentsId+')> <td>'
+                                +response[i].studentsId+
+                                '</td><td>'
+                                +response[i].studentsName+
+                                '</td><td>'
+                                +response[i].createAt+
+                                '</td></tr>';
+                            }
+                        }
+                    }else{
+                        //게시글 없음 로직 구현
+                        html += '<tr><td colspan=6 style="text-align: center;">게시글이 없습니다.</td></tr>';
+                    }
+                    $('#boardData').children().remove();
+                    $('#boardData').append(html);//tbody에 json데이터 렌더링
+                }
+            });
+        }
     });
 </script>
 </html>
