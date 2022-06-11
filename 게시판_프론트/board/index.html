@@ -14,7 +14,7 @@
             <div class="editor">
                 <div class="input-box">
                     <label for="studentsName">작성자 : </label>
-                    <input id="studentsName" type="text" value="현상원" readonly>
+                    <input id="studentsName" type="text" value="김민영" readonly>
                 </div>
                 <div class="input-box">
                     <label for="title">제목 : </label>
@@ -242,6 +242,7 @@
             type : 'GET',
             dataType: 'json',
             success: function (response) {
+                console.log(response);
                 //html append 작성
                 var html = '';
                 var len = response.list.length;
@@ -419,7 +420,7 @@
                 if(response > 0){
                     $('#boardData').children().remove();//tbody id
                     getBoardList(1,10);
-                }
+                } 
             }
         });
     }
