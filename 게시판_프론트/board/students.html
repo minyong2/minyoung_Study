@@ -155,7 +155,7 @@
         //AJAX 작성
         //2. AJAX를 이용해서 서버와 연결
         $.ajax({
-            url: 'http://localhost:8080/api/v1/student/detail/'+studentsId,
+            url: 'http://localhost:8080/api/v1/students/id/'+studentsId,
             type : 'GET',
             dataType: 'json',
             success: function (response) {
@@ -175,7 +175,7 @@
 getStudentsList(1,10)
 function getStudentsList(pageNum, pageSize){
     $.ajax({
-        url : 'http://localhost:8080/api/v1/student?pageNum='+pageNum+'&pageSize='+pageSize,
+        url : 'http://localhost:8080/api/v1/students?pageNum='+pageNum+'&pageSize='+pageSize,
         type : 'GET',
         dataType : 'json',
         success: function(response){
@@ -241,7 +241,7 @@ function getStudentsList(pageNum, pageSize){
         };
         //3. AJAX를 이용해서 업데이트!
         $.ajax({
-                url : 'http://localhost:8080/api/v1/student/id/'+studentsId,
+                url : 'http://localhost:8080/api/v1/students/id/'+studentsId,
                 type : 'PATCH', //HTTP 메소드는 PATCH
                 contentType: 'application/json', //서버에 json 타입으로 보낼 예정(요청)
                 dataType: 'json', //서버 결과를 json으로 응답받겠다.
@@ -263,7 +263,7 @@ function getStudentsList(pageNum, pageSize){
         //게시판 번호 확인
         var studentsIdHidden =  $('#boardIdHidden').val(); //hidden에 숨겨둔 boardId 가져오기.
         $.ajax({
-            url: 'http://localhost:8080/api/v1/student/id/'+studentsIdHidden,
+            url: 'http://localhost:8080/api/v1/students/id/'+studentsIdHidden,
             type : 'DELETE',
             dataType: 'json',
             success: function (response) {
@@ -290,7 +290,7 @@ function getStudentsList(pageNum, pageSize){
             }
             //2. AJAX 호출
             $.ajax({
-                url: 'http://localhost:8080/api/v1/student/search?writer='+studentsName+'&pageNum='+pageNum+'&pageSize='+pageSize,
+                url: 'http://localhost:8080/api/v1/students/search?writer='+studentsName+'&pageNum='+pageNum+'&pageSize='+pageSize,
                 type : 'GET',
                 dataType: 'json',
                 success: function (response) {
